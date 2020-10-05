@@ -16,9 +16,10 @@ const PageHeader = () => {
         </PageLink>
         <ul className="nav">
           <li>
-            <PageLink to="/login" className="">
-              Login
-            </PageLink>
+            <PageLink to="/login">Login</PageLink>
+          </li>
+          <li>
+            <PageLink to="/caterers">Caterers</PageLink>
           </li>
         </ul>
       </nav>
