@@ -1,15 +1,11 @@
-import CatererItem from "../CatererItem";
+import ListItem from "../../base/ListItem";
 
 const CatererList = ({ caterers }) => {
   return (
     <div className="list-container">
       <div>
         {caterers.map((caterer) => (
-          <CatererItem
-            key={caterer.id}
-            catererName={caterer.name}
-            catererEmail={caterer.email}
-          />
+          <ListItem key={caterer.id} catererName={caterer.username} />
         ))}
       </div>
     </div>

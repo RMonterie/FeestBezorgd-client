@@ -1,15 +1,14 @@
 import PageLink from "../../page/PageLink";
-import "./CatererItem.scss";
+import "./ListItem.scss";
 
-const CatererItem = ({ catererName, catererEmail }) => {
+const ListItem = ({ catererName }) => {
   return (
     <PageLink to={`/caterers/caterer?caterer=${catererName}`}>
       <div className="card">
         <h4>{catererName}</h4>
-        <h5>{catererEmail}</h5>
       </div>
     </PageLink>
   );
 };
 
-export default CatererItem;
+export default ListItem;
