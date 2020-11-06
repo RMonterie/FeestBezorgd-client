@@ -1,6 +1,6 @@
 import PageLink from "../PageLink";
 
-import Style from "./PageHeader.module.scss";
+import "./PageHeader.scss";
 
 /**
  * Page header containing navigation.
@@ -14,11 +14,12 @@ const PageHeader = () => {
         <PageLink to="/" className="title">
           Feestbezorgd
         </PageLink>
-        <ul className="nav-items">
+        <ul className="nav">
           <li>
-            <PageLink to="/login" className="">
-              Login
-            </PageLink>
+            <PageLink to="/login">Login</PageLink>
+          </li>
+          <li>
+            <PageLink to="/caterers">Caterers</PageLink>
           </li>
         </ul>
       </nav>
