@@ -13,7 +13,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <form>
         <label htmlFor="username">Username</label>
         <input type="text" name="username" onChange={usernameChangeHandler} />
