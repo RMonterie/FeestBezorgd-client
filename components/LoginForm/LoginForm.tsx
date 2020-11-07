@@ -1,6 +1,10 @@
 import Axios from "axios";
 import React, { useState } from "react";
 
+import PageLink from "../../components/page/PageLink";
+
+import "./LoginForm.scss";
+
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +41,14 @@ const LoginForm = () => {
           onChange={passwordChangeHandler}
         />
         <button type="submit">Send request to the api</button>
+        <div>
+          <p>
+            Don't have an account? Register{" "}
+            <PageLink to="/" className="link">
+              here.
+            </PageLink>
+          </p>
+        </div>
       </form>
     </div>
   );
