@@ -1,11 +1,26 @@
+import LoginForm from "../../components/LoginForm";
 import BaseLayout from "../../layout/BaseLayout";
+import PageLink from "../../components/page/PageLink";
 
-const login = () => {
+import "./LoginPage.scss";
+
+const LoginPage = () => {
   return (
-    <BaseLayout title="login">
-      <h2>We are on the login page now</h2>
+    <BaseLayout title="Login">
+      <div className="login-content-container">
+        <h2>Log in existing user</h2>
+        <LoginForm buttonText="Login" />
+        <div>
+          <p>
+            Don't have an account? Register{" "}
+            <PageLink to="/register" className="link">
+              here.
+            </PageLink>
+          </p>
+        </div>
+      </div>
     </BaseLayout>
   );
 };
 
-export default login;
+export default LoginPage;

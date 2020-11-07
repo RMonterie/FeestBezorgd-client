@@ -1,0 +1,19 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    align-items: center;
+
+    button {
+      margin: 16px;
+    }
+
+    .link {
+      text-decoration: none;
+    }
+  }
+}

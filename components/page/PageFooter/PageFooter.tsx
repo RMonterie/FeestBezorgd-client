@@ -1,6 +1,6 @@
 import PageLink from "../PageLink";
 
-import "./PageFooter.module.scss";
+import "./PageFooter.scss";
 /**
  * Page footer.
  *
