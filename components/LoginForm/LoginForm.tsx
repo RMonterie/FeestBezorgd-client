@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { useState } from "react";
 
 const LoginForm = () => {
@@ -12,9 +13,21 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    Axios.post("https://localhost:8000/authenticate", {
+      username,
+      password,
+    }).then((response) => {
+      if (response.data.jwt) {
+        localStorage.setItem("jwt", JSON.stringify(response.data));
+      }
+    });
+  };
+
   return (
     <div className="login-container">
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <label htmlFor="username">Username</label>
         <input type="text" name="username" onChange={usernameChangeHandler} />
         <label htmlFor="password">Password</label>
