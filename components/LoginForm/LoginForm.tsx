@@ -15,7 +15,7 @@ const LoginForm = () => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    Axios.post("https://localhost:8000/authenticate", {
+    Axios.post("http://localhost:8080/authenticate", {
       username,
       password,
     }).then((response) => {
