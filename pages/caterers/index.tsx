@@ -3,13 +3,19 @@ import axios from "axios";
 
 import CatererList from "../../components/caterers/CatererList";
 import BaseLayout from "../../layout/BaseLayout";
+import { parse } from "path";
 
 const CaterersPage = () => {
   const [caterers, setCaterers] = useState([]);
+  const token = JSON.parse(localStorage.getItem("jwt"));
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/findAllCaterers")
+      .get("http://localhost:8080/caterers", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => setCaterers(response.data));
   }, []);
 

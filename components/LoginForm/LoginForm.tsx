@@ -24,7 +24,7 @@ const LoginForm = () => {
       password,
     }).then((response) => {
       if (response.data.jwt) {
-        localStorage.setItem("jwt", JSON.stringify(response.data));
+        localStorage.setItem("jwt", JSON.stringify(response.data.jwt));
       }
     });
   };
