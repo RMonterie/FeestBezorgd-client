@@ -1,0 +1,19 @@
+.product-container {
+  display: flex;
+  flex-direction: column;
+  max-width: inherit;
+  margin: 16px;
+  padding: 16px;
+  background-color: orange;
+  min-height: 80px;
+  justify-content: space-between;
+
+  .name {
+    font-size: larger;
+    font-weight: bold;
+  }
+
+  button {
+    max-width: max-content;
+  }
+}

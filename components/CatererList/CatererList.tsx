@@ -1,4 +1,4 @@
-import ListItem from "../../base/ListItem";
+import ListItem from "../CatererListItem";
 
 const CatererList = ({ caterers }) => {
   return (

@@ -1,5 +1,5 @@
-import PageLink from "../../page/PageLink";
-import "./ListItem.scss";
+import PageLink from "../page/PageLink";
+import "./CatererListItem.scss";
 
 const ListItem = ({ catererName }) => {
   return (
