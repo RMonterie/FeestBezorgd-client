@@ -1,0 +1,16 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 80px;
+  margin: 12px;
+  text-decoration: none;
+
+  h4 {
+    font-size: xx-large;
+  }
+}
