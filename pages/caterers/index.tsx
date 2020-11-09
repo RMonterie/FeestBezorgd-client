@@ -6,13 +6,13 @@ import BaseLayout from "../../layout/BaseLayout";
 
 const CaterersPage = () => {
   const [caterers, setCaterers] = useState([]);
-  const token = JSON.parse(localStorage.getItem("jwt"));
 
   useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("jwt"));
     axios
       .get("http://localhost:8080/caterers", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token.jwt}`,
         },
       })
       .then((response) => {
