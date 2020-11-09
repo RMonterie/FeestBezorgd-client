@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-import PageLink from "../../components/page/PageLink";
 import "./LoginForm.scss";
 
 interface LoginFormProps {
@@ -45,15 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
           name="password"
           onChange={passwordChangeHandler}
         />
-        <button type="submit">Send request to the api</button>
-        <div>
-          <p>
-            Don't have an account? Register{" "}
-            <PageLink to="/" className="link">
-              here.
-            </PageLink>
-          </p>
-        </div>
+        <button type="submit">{buttonText}</button>
       </form>
     </div>
   );
