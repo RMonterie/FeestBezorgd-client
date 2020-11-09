@@ -1,14 +1,9 @@
+import { useState } from "react";
 import axios from "axios";
-import React, { useState } from "react";
 
-import PageLink from "../../components/page/PageLink";
-import "./LoginForm.scss";
+import "./RegisterForm.scss";
 
-interface LoginFormProps {
-  buttonText: string;
-}
-
-const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
+const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,20 +17,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    let name = username;
     axios
-      .post("http://localhost:8080/authenticate", {
-        username,
+      .post("http://localhost:8080/registerCustomer", {
+        name,
         password,
       })
       .then((response) => {
-        if (response.data.jwt) {
-          localStorage.setItem("jwt", JSON.stringify(response.data));
-        }
+        console.log(response.data);
       });
   };
 
   return (
-    <div className="login-container">
+    <div className="register-container">
       <form onSubmit={onSubmitHandler}>
         <label htmlFor="username">Username</label>
         <input type="text" name="username" onChange={usernameChangeHandler} />
@@ -45,18 +39,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
           name="password"
           onChange={passwordChangeHandler}
         />
-        <button type="submit">Send request to the api</button>
-        <div>
-          <p>
-            Don't have an account? Register{" "}
-            <PageLink to="/" className="link">
-              here.
-            </PageLink>
-          </p>
-        </div>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
