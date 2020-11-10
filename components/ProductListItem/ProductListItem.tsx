@@ -1,3 +1,6 @@
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../redux/actions/cart";
+
 import "./ProductListItem.scss";
 
 interface ProductListItemProps {
@@ -6,11 +9,19 @@ interface ProductListItemProps {
 }
 
 const ProductListItem: React.FC<ProductListItemProps> = ({ name, price }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="product-container">
       <div className="name">{name}</div>
       <div className="price">{`€${price},-`}</div>
-      <button>Put in shopping basket</button>
+      <button
+        onClick={() => {
+          dispatch(addProductToCart({ name: name, price: price }));
+        }}
+      >
+        Put in shopping basket
+      </button>
     </div>
   );
 };
