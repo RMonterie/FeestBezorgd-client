@@ -12,7 +12,6 @@ const Cart = (state = initialState, action) => {
         products: [...state.products, action.payload],
       };
     case actionTypes.CLEAR_CART:
-      console.log("jeweet swa");
       return {
         ...state,
         products: [],
