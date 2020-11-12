@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-import { clearCart } from "../../../redux/actions/cart";
+import { clearCart } from "../../../redux/actions/cartActions";
 
 import BaseLayout from "../../../layout/BaseLayout";
 import ProductList from "../../../components/ProductList";
@@ -12,7 +12,7 @@ import "./CatererPage.scss";
 
 const CatererPage = () => {
   const [products, setProducts] = useState([]);
-  const cartItems = useSelector((state) => state.Cart.products);
+  const cartItems = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
   const router = useRouter();
   const catererName = router.query.caterer.toString();

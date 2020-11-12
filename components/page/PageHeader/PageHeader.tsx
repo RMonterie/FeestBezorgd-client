@@ -1,3 +1,6 @@
+import { useSelector, useDispatch } from "react-redux";
+
+import { deAuthenticate } from "../../../redux/actions/authActions";
 import PageLink from "../PageLink";
 
 import "./PageHeader.scss";
@@ -8,6 +11,16 @@ import "./PageHeader.scss";
  * @returns {JSX.Element}
  */
 const PageHeader = () => {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(
+    (state) => state.authentication.isAuthenticated
+  );
+
+  const logOutHandler = () => {
+    dispatch(deAuthenticate());
+    localStorage.clear();
+  };
+
   return (
     <header id="page-header">
       <nav>
@@ -15,14 +28,19 @@ const PageHeader = () => {
           Feestbezorgd
         </PageLink>
         <ul className="nav">
-          <li>
-            <PageLink to="/login">Login</PageLink>
-          </li>
+          {!isAuthenticated == true && (
+            <li>
+              <PageLink to="/login">Login</PageLink>
+            </li>
+          )}
           <li>
             <PageLink to="/caterers">Caterers</PageLink>
           </li>
         </ul>
       </nav>
+      {isAuthenticated == true && (
+        <button onClick={logOutHandler}>Log out</button>
+      )}
     </header>
   );
 };

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addProductToCart } from "../../redux/actions/cart";
+import { addProductToCart } from "../../redux/actions/cartActions";
 
 import "./ProductListItem.scss";
 

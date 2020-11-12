@@ -1,5 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import Router from "next/router";
+
+import { authenticate } from "../../redux/actions/authActions";
 
 import "./LoginForm.scss";
 
@@ -10,14 +14,7 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const usernameChangeHandler = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const passwordChangeHandler = (event) => {
-    setPassword(event.target.value);
-  };
+  const dispatch = useDispatch();
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -27,8 +24,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
         password,
       })
       .then((response) => {
-        if (response.data.jwt) {
+        if (response.data.jwt && response.status == 200) {
           localStorage.setItem("jwt", JSON.stringify(response.data));
+          dispatch(authenticate());
+          Router.push("/");
         }
       });
   };
@@ -37,12 +36,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
     <div className="login-container">
       <form onSubmit={onSubmitHandler}>
         <label htmlFor="username">Username</label>
-        <input type="text" name="username" onChange={usernameChangeHandler} />
+        <input
+          type="text"
+          name="username"
+          onChange={(event) => setUsername(event.target.value)}
+        />
         <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"
-          onChange={passwordChangeHandler}
+          onChange={(event) => setPassword(event.target.value)}
         />
         <button type="submit">{buttonText}</button>
       </form>
