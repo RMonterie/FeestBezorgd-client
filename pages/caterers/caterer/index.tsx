@@ -19,9 +19,9 @@ const CatererPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/caterers?username=${router.query.caterer}`)
+      .get(`http://localhost:8080/caterers/${router.query.caterer}`)
       .then((response) => {
-        setProducts(response.data[0].products);
+        setProducts(response.data.products);
       });
   }, []);
 
