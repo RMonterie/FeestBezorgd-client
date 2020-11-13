@@ -7,6 +7,7 @@ import BaseLayout from "../../layout/BaseLayout";
 const CaterersPage = () => {
   const [caterers, setCaterers] = useState([]);
 
+  //TODO find a way to implement the getAllCaterers function from api/catererMethods.js
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("jwt"));
     axios

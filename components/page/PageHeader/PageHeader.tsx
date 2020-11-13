@@ -10,6 +10,7 @@ import "./PageHeader.scss";
  *
  * @returns {JSX.Element}
  */
+//TODO Implement the login/register modal to here
 const PageHeader = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(

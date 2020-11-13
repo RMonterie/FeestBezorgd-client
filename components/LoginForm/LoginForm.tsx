@@ -1,9 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import Router from "next/router";
 
 import { authenticate } from "../../redux/actions/authActions";
+import { login } from "../../api/user/authMethods";
 
 import "./LoginForm.scss";
 
@@ -11,25 +11,28 @@ interface LoginFormProps {
   buttonText: string;
 }
 
+//TODO Move this form to the header
 const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const onSubmitHandler = (event) => {
+  /**
+   * Async function responsible for submitting the login form.
+   * On successful login changes the isAuthenticated state to true and
+   * redirects the user to the landing page.
+   *
+   * @param {event} event
+   */
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:8080/authenticate", {
-        username,
-        password,
-      })
-      .then((response) => {
-        if (response.data.jwt && response.status == 200) {
-          localStorage.setItem("jwt", JSON.stringify(response.data));
-          dispatch(authenticate());
-          Router.push("/");
-        }
-      });
+    const succesfulLogin = await login(username, password);
+    console.log(succesfulLogin);
+
+    if (succesfulLogin) {
+      dispatch(authenticate());
+      Router.push("/");
+    }
   };
 
   return (
