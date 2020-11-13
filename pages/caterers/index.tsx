@@ -9,22 +9,28 @@ const CaterersPage = () => {
 
   //TODO find a way to implement the getAllCaterers function from api/catererMethods.js
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("jwt"));
-    axios
-      .get("http://localhost:8080/caterers", {
-        headers: {
-          Authorization: `Bearer ${token.jwt}`,
-        },
-      })
-      .then((response) => {
-        setCaterers(response.data);
-      });
+    if (localStorage.getItem("jwt") !== null) {
+      const token = localStorage.getItem("jwt");
+      axios
+        .get("http://localhost:8080/caterers", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setCaterers(response.data);
+        });
+    }
   }, []);
 
   return (
     <BaseLayout title="Find a caterer">
       <h2 className="page-title">Caterers</h2>
-      <CatererList caterers={caterers} />
+      {caterers.length > 0 ? (
+        <CatererList caterers={caterers} />
+      ) : (
+        <h2>There are no caterers to display!</h2>
+      )}
     </BaseLayout>
   );
 };
