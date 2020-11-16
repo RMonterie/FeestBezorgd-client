@@ -11,6 +11,13 @@ const cart = (state = initialState, action) => {
         ...state,
         products: [...state.products, action.payload],
       };
+    case actionTypes.REMOVE_PRODUCT_FROM_CART:
+      const newProducts = [...state.products];
+      newProducts.splice(action.payload, 1);
+      return {
+        ...state,
+        products: [...newProducts],
+      };
     case actionTypes.CLEAR_CART:
       return {
         ...state,

@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 import CatererList from "../../components/CatererList";
+import { getAllCaterers } from "../../api/caterers/catererMethods";
+
 import BaseLayout from "../../layout/BaseLayout";
 
 const CaterersPage = () => {
   const [caterers, setCaterers] = useState([]);
 
-  //TODO find a way to implement the getAllCaterers function from api/catererMethods.js
   useEffect(() => {
-    if (localStorage.getItem("jwt") !== null) {
-      const token = localStorage.getItem("jwt");
-      axios
-        .get("http://localhost:8080/caterers", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-          setCaterers(response.data);
-        });
-    }
+    const getCaterers = async () => {
+      const response = await getAllCaterers();
+      setCaterers(response.data);
+    };
+
+    getCaterers();
   }, []);
 
   return (

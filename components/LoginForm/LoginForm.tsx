@@ -12,6 +12,7 @@ interface LoginFormProps {
 }
 
 //TODO Move this form to the header
+//TODO Add validation to this form
 const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +23,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
    * On successful login changes the isAuthenticated state to true and
    * redirects the user to the landing page.
    *
-   * @param {event} event
+   * @param {Event} event
    */
   const onSubmitHandler = async (event) => {
     event.preventDefault();

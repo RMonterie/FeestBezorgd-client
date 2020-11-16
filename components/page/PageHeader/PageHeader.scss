@@ -50,4 +50,10 @@
       }
     }
   }
+
+  .open-modal {
+    &:hover {
+      color: green;
+    }
+  }
 }

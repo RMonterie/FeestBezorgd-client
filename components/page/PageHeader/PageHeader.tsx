@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { deAuthenticate } from "../../../redux/actions/authActions";
@@ -12,6 +13,7 @@ import "./PageHeader.scss";
  */
 //TODO Implement the login/register modal to here
 const PageHeader = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(
     (state) => state.authentication.isAuthenticated
@@ -38,10 +40,17 @@ const PageHeader = () => {
             <PageLink to="/caterers">Caterers</PageLink>
           </li>
         </ul>
+        <div
+          onClick={() => setModalIsOpen(!modalIsOpen)}
+          className="open-modal"
+        >
+          OPEN THE MODAL
+        </div>
       </nav>
       {isAuthenticated == true && (
         <button onClick={logOutHandler}>Log out</button>
       )}
+      {modalIsOpen && <div>de modal is wahed open</div>}
     </header>
   );
 };
