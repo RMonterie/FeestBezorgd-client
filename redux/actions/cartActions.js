@@ -7,7 +7,7 @@ export const addProductToCart = (product) => {
   };
 };
 
-export const removeProductFromcart = (index) => {
+export const removeProductFromCart = (index) => {
   return {
     type: actionTypes.REMOVE_PRODUCT_FROM_CART,
     payload: index,

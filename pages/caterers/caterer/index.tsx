@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import axios from "axios";
-
-import {
-  clearCart,
-  removeProductFromcart,
-} from "../../../redux/actions/cartActions";
 
 import BaseLayout from "../../../layout/BaseLayout";
 import ProductList from "../../../components/ProductList";
 
 import "./CatererPage.scss";
+import ShoppingCart from "../../../components/ShoppingCart";
 
 const CatererPage = () => {
   const [products, setProducts] = useState([]);
-  const cartItems = useSelector((state) => state.cart.products);
-  const dispatch = useDispatch();
   const router = useRouter();
   const catererName = router.query.caterer?.toString();
 
+  //TODO: Remove the axios call from the useEffect
   useEffect(() => {
     axios
       .get(`http://localhost:8080/caterers/${router.query.caterer}`)
@@ -37,29 +31,8 @@ const CatererPage = () => {
         ) : (
           <h2>Loading...</h2>
         )}
-
-        <div>
-          Products in shopping cart
-          <div>
-            {cartItems.length != 0 &&
-              cartItems.map((item) => {
-                return (
-                  <div>
-                    <p>{item.name}</p>
-                    <p>{`€${item.price}`}</p>
-                    <p>{cartItems.indexOf(item)}</p>
-                    <button onClick={() => dispatch(removeProductFromcart())}>
-                      Delete🗑
-                    </button>
-                  </div>
-                );
-              })}
-            <button onClick={() => dispatch(clearCart())}>
-              Clear the shopping cart
-            </button>
-          </div>
-        </div>
       </div>
+      <ShoppingCart />
     </BaseLayout>
   );
 };
