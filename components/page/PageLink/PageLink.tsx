@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-interface Props {
+interface pageLinkProps {
   to: string;
   children: React.ReactNode;
   className?: string;
@@ -12,7 +12,7 @@ interface Props {
  *
  * @returns {JSX.Element}
  */
-const PageLink: React.FC<Props> = ({ to, children, className }) => {
+const PageLink: React.FC<pageLinkProps> = ({ to, children, className }) => {
   return (
     <Link href={to}>
       <a className={className}>{children}</a>

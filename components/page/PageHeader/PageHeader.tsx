@@ -2,9 +2,13 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { deAuthenticate } from "../../../redux/actions/authActions";
+import NavLinkItem from "../../NavBar/NavLinkItem/NavLinkItem";
 import PageLink from "../PageLink";
+import NavBar from "../../NavBar/NavBar";
 
 import "./PageHeader.scss";
+import NavDropdownItem from "../../NavBar/NavDropdownItem/NavDropdownItem";
+import DropdownMenu from "../../DropdownMenu";
 
 /**
  * Page header containing navigation.
@@ -13,20 +17,20 @@ import "./PageHeader.scss";
  */
 //TODO Implement the login/register modal to here
 const PageHeader = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const dispatch = useDispatch();
-  const isAuthenticated = useSelector(
-    (state) => state.authentication.isAuthenticated
-  );
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const dispatch = useDispatch();
+  // const isAuthenticated = useSelector(
+  //   (state) => state.authentication.isAuthenticated
+  // );
 
-  const logOutHandler = () => {
-    dispatch(deAuthenticate());
-    localStorage.clear();
-  };
+  // const logOutHandler = () => {
+  //   dispatch(deAuthenticate());
+  //   localStorage.clear();
+  // };
 
   return (
     <header id="page-header">
-      <nav>
+      {/* <nav>
         <PageLink to="/" className="title">
           Feestbezorgd
         </PageLink>
@@ -50,7 +54,16 @@ const PageHeader = () => {
       {isAuthenticated == true && (
         <button onClick={logOutHandler}>Log out</button>
       )}
-      {modalIsOpen && <div>de modal is wahed open</div>}
+      {modalIsOpen && <div>de modal is wahed open</div>} */}
+      <div className="title">
+        <PageLink to="/">FeestBezorgd</PageLink>
+      </div>
+      <div>
+        <NavBar>
+          <NavLinkItem to="/caterers" label="Caterers" />
+          <NavDropdownItem label="🙍‍♂️" dropdown={<DropdownMenu />} />
+        </NavBar>
+      </div>
     </header>
   );
 };
