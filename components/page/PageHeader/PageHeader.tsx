@@ -60,6 +60,7 @@ const PageHeader = () => {
       </div>
       <div>
         <NavBar>
+          <NavLinkItem to="/products" label="My Products" />
           <NavLinkItem to="/caterers" label="Caterers" />
           <NavDropdownItem label="🙍‍♂️" dropdown={<DropdownMenu />} />
         </NavBar>
