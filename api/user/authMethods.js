@@ -20,9 +20,11 @@ export const login = async (username, password) => {
     return;
   }
 
-  const data = response.data.jwt;
+  const user = JSON.stringify(response.data.userDetailsForm);
+  const jwt = response.data.jwt;
 
-  localStorage.setItem("jwt", data);
+  localStorage.setItem("user", user);
+  localStorage.setItem("jwt", jwt);
 
   return true;
 };
