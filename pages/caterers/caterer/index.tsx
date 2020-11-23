@@ -6,7 +6,6 @@ import BaseLayout from "../../../layout/BaseLayout";
 import ProductList from "../../../components/ProductList";
 
 import "./CatererPage.scss";
-import ShoppingCart from "../../../components/ShoppingCart";
 
 const CatererPage = () => {
   const [products, setProducts] = useState([]);
@@ -32,7 +31,6 @@ const CatererPage = () => {
           <h2>Loading...</h2>
         )}
       </div>
-      <ShoppingCart />
     </BaseLayout>
   );
 };

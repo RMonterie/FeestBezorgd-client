@@ -4,16 +4,16 @@ import { deAuthenticate } from "../../redux/actions/authActions";
 import LoginForm from "../LoginForm";
 import PageLink from "../page/PageLink";
 
-import "./DropdownMenu.scss";
+import "./UserDropdownMenu.scss";
 
-interface dropdownMenuProps {
+interface userDropdownMenuProps {
   authenticated: boolean;
   name?: string;
   email?: string;
   address?: string;
 }
 
-const DropdownMenu: React.FC<dropdownMenuProps> = ({
+const UserDropdownMenu: React.FC<userDropdownMenuProps> = ({
   authenticated,
   name,
   email,
@@ -29,7 +29,6 @@ const DropdownMenu: React.FC<dropdownMenuProps> = ({
             <p>{address}</p>
             <p>{email}</p>
           </div>
-          <p>Shopping Cart</p>
           <p>My orders</p>
           <p>Edit my data</p>
           <button onClick={() => dispatch(deAuthenticate())}>Log out</button>
@@ -49,4 +48,4 @@ const DropdownMenu: React.FC<dropdownMenuProps> = ({
   );
 };
 
-export default DropdownMenu;
+export default UserDropdownMenu;

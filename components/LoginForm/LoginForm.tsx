@@ -11,7 +11,6 @@ interface LoginFormProps {
   buttonText: string;
 }
 
-//TODO Move this form to the header
 //TODO Add validation to this form
 const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const [username, setUsername] = useState("");

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 import NavLinkItem from "../../NavBar/NavLinkItem/NavLinkItem";
 import PageLink from "../PageLink";
@@ -9,7 +9,8 @@ import NavBar from "../../NavBar/NavBar";
 
 import "./PageHeader.scss";
 import NavDropdownItem from "../../NavBar/NavDropdownItem/NavDropdownItem";
-import DropdownMenu from "../../DropdownMenu";
+import UserDropDownMenu from "../../UserDropdownMenu";
+import ShoppingCartDropdownMenu from "../../ShoppingCartDropdownMenu";
 
 /**
  * Page header containing navigation.
@@ -42,7 +43,7 @@ const PageHeader = () => {
               label={`${user.name}`}
               icon={<FontAwesomeIcon icon={faUser} />}
               dropdown={
-                <DropdownMenu
+                <UserDropDownMenu
                   authenticated={true}
                   name={user.name}
                   address={user.address}
@@ -53,9 +54,14 @@ const PageHeader = () => {
           ) : (
             <NavDropdownItem
               label={`Log in`}
-              dropdown={<DropdownMenu authenticated={false} />}
+              icon={<FontAwesomeIcon icon={faUser} />}
+              dropdown={<UserDropDownMenu authenticated={false} />}
             />
           )}
+          <NavDropdownItem
+            icon={<FontAwesomeIcon icon={faShoppingCart} />}
+            dropdown={<ShoppingCartDropdownMenu />}
+          />
         </NavBar>
       </div>
     </header>

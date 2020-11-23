@@ -4,7 +4,7 @@ import "./NavDropdownItem.scss";
 
 interface navDropdownItemProps {
   dropdown: React.ReactNode;
-  label: string;
+  label?: string;
   icon: React.ReactNode;
 }
 
