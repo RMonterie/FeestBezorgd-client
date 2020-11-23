@@ -8,7 +8,7 @@ import { baseUrl } from "../../constants";
  * @param {string} username
  * @param {string} password
  *
- * @return {boolean}
+ * @returns {boolean}
  */
 export const login = async (username, password) => {
   const response = await axios.post(`${baseUrl}/authenticate`, {
@@ -36,7 +36,7 @@ export const login = async (username, password) => {
  * @param {string} username
  * @param {string} password
  *
- * @return {boolean}
+ * @returns {boolean}
  */
 export const register = async (username, password) => {
   const response = await axios.post(`${baseUrl}/registerCustomer`, {

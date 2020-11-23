@@ -5,11 +5,13 @@ import "./NavDropdownItem.scss";
 interface navDropdownItemProps {
   dropdown: React.ReactNode;
   label: string;
+  icon: React.ReactNode;
 }
 
 const NavDropdownItem: React.FC<navDropdownItemProps> = ({
   dropdown,
   label,
+  icon,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   if (!dropdown) {
@@ -19,6 +21,7 @@ const NavDropdownItem: React.FC<navDropdownItemProps> = ({
   return (
     <li>
       <span onClick={() => setIsOpen(!isOpen)} className="dropdown-button">
+        <i>{icon}</i>
         {label}
       </span>
       {isOpen && dropdown}

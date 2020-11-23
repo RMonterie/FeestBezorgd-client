@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import NavLinkItem from "../../NavBar/NavLinkItem/NavLinkItem";
 import PageLink from "../PageLink";
@@ -37,7 +39,8 @@ const PageHeader = () => {
           <NavLinkItem to="/caterers" label="Caterers" />
           {isAuthenticated ? (
             <NavDropdownItem
-              label={`🙍‍♂️ ${user.name}`}
+              label={`${user.name}`}
+              icon={<FontAwesomeIcon icon={faUser} />}
               dropdown={
                 <DropdownMenu
                   authenticated={true}
@@ -49,7 +52,7 @@ const PageHeader = () => {
             />
           ) : (
             <NavDropdownItem
-              label={`🙍‍♂️ Log in`}
+              label={`Log in`}
               dropdown={<DropdownMenu authenticated={false} />}
             />
           )}
