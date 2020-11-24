@@ -1,4 +1,4 @@
-interface iconCardProps {
+interface IconCardProps {
   icon: React.ReactNode;
   text: string;
 }
@@ -8,7 +8,7 @@ interface iconCardProps {
  *
  * @returns {React.FC}
  */
-const IconCard: React.FC<iconCardProps> = ({ icon, text }) => {
+const IconCard: React.FC<IconCardProps> = ({ icon, text }) => {
   return (
     <div className="icon-card-wrapper">
       <i>{icon}</i>

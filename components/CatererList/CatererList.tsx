@@ -1,4 +1,4 @@
-import ListItem from "../CatererListItem";
+import ListItem from "./CatererListItem/CatererListItem";
 
 const CatererList = ({ caterers }) => {
   return (

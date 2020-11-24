@@ -3,7 +3,7 @@ import {
   faUtensils,
   faCalendarDay,
   faTruck,
-} from "@fortAwesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons";
 
 import BaseLayout from "../layout/BaseLayout";
 

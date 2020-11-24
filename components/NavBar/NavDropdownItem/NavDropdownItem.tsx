@@ -2,13 +2,13 @@ import { useState } from "react";
 
 import "./NavDropdownItem.scss";
 
-interface navDropdownItemProps {
+interface NavDropdownItemProps {
   dropdown: React.ReactNode;
   label?: string;
   icon: React.ReactNode;
 }
 
-const NavDropdownItem: React.FC<navDropdownItemProps> = ({
+const NavDropdownItem: React.FC<NavDropdownItemProps> = ({
   dropdown,
   label,
   icon,

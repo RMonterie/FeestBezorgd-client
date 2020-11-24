@@ -1,11 +1,11 @@
 import PageLink from "../../page/PageLink";
 
-interface navLinkItemProps {
+interface NavLinkItemProps {
   to: string;
   label: string;
 }
 
-const NavLinkItem: React.FC<navLinkItemProps> = ({ to, label }) => {
+const NavLinkItem: React.FC<NavLinkItemProps> = ({ to, label }) => {
   return (
     <li>
       <PageLink to={to}>{label}</PageLink>

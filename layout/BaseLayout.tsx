@@ -4,12 +4,12 @@ import PageHeader from "../components/page/PageHeader";
 import PageFooter from "../components/page/PageFooter";
 import "./baseLayout.scss";
 
-interface Props {
+interface BaseLayoutProps {
   children: React.ReactNode;
   title: string;
 }
 
-const BaseLayout: React.FC<Props> = ({ children, title }) => {
+const BaseLayout: React.FC<BaseLayoutProps> = ({ children, title }) => {
   return (
     <div className="page-container">
       <Head>

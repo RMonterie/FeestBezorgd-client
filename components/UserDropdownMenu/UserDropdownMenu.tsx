@@ -6,14 +6,14 @@ import PageLink from "../page/PageLink";
 
 import "./UserDropdownMenu.scss";
 
-interface userDropdownMenuProps {
+interface UserDropdownMenuProps {
   authenticated: boolean;
   name?: string;
   email?: string;
   address?: string;
 }
 
-const UserDropdownMenu: React.FC<userDropdownMenuProps> = ({
+const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
   authenticated,
   name,
   email,
