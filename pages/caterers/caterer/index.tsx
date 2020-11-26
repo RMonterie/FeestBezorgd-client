@@ -7,6 +7,12 @@ import ProductList from "../../../components/ProductList";
 
 import "./CatererPage.scss";
 
+/**
+ * Page that displays the details and catalogue
+ * of a single caterer.
+ *
+ * @returns {JSX.Element}
+ */
 const CatererPage = () => {
   const [products, setProducts] = useState([]);
   const router = useRouter();

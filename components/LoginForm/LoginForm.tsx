@@ -11,6 +11,12 @@ interface LoginFormProps {
 }
 
 //TODO Add validation to this form
+/**
+ * Component that renders a form and calls the login function
+ * with the provided form details.
+ *
+ * @returns {JSX.Element}
+ */
 const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

@@ -1,7 +1,17 @@
 import PageLink from "../../page/PageLink";
 import "./CatererListItem.scss";
 
-const ListItem = ({ catererName }) => {
+interface CatererListItemProps {
+  catererName: string;
+}
+
+/**
+ * Component that displays a card with the name of
+ * a given caterer and a link to the caterer's page.
+ *
+ * @returns {JSX.Element}
+ */
+const CatererListItem: React.FC<CatererListItemProps> = ({ catererName }) => {
   return (
     <PageLink to={`/caterers/caterer?caterer=${catererName}`}>
       <div className="card">
@@ -11,4 +21,4 @@ const ListItem = ({ catererName }) => {
   );
 };
 
-export default ListItem;
+export default CatererListItem;

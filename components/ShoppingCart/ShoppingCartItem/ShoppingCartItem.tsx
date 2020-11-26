@@ -13,7 +13,7 @@ interface ShoppingCartItemProps {
 }
 
 /**
- * Component that displays a single item in the shopping cart
+ * Component that displays a single item in the shopping cart.
  *
  * @returns {JSX.Element}
  */

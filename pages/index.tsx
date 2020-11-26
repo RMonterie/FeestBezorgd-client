@@ -10,6 +10,11 @@ import BaseLayout from "../layout/BaseLayout";
 import "./LandingPage.scss";
 import IconCard from "../components/IconCard";
 
+/**
+ * Home page.
+ *
+ * @returns {JSX.Element}
+ */
 export default function Home() {
   return (
     <BaseLayout title="Home">

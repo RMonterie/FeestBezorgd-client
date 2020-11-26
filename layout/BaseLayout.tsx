@@ -9,6 +9,11 @@ interface BaseLayoutProps {
   title: string;
 }
 
+/**
+ * Base layout in which all pages are wrapped.
+ *
+ * @returns {JSX.Element}
+ */
 const BaseLayout: React.FC<BaseLayoutProps> = ({ children, title }) => {
   return (
     <div className="page-container">

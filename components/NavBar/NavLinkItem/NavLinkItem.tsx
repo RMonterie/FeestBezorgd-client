@@ -5,6 +5,11 @@ interface NavLinkItemProps {
   label: string;
 }
 
+/**
+ * Component that renders a link to a given url.
+ *
+ * @returns {JSX.Element}
+ */
 const NavLinkItem: React.FC<NavLinkItemProps> = ({ to, label }) => {
   return (
     <li>

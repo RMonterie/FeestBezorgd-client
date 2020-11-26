@@ -8,6 +8,11 @@ interface NavDropdownItemProps {
   icon: React.ReactNode;
 }
 
+/**
+ * Component that opens and closes given dropdown onClick.
+ *
+ * @returns {JSX.Element}
+ */
 const NavDropdownItem: React.FC<NavDropdownItemProps> = ({
   dropdown,
   label,
