@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Router from "next/router";
 
 import { authenticate } from "../../redux/actions/authActions";
 import { login } from "../../api/user/authMethods";
@@ -31,7 +30,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
 
     if (succesfulLogin) {
       dispatch(authenticate());
-      Router.push("/");
     }
   };
 

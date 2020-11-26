@@ -1,14 +1,22 @@
-.dropdown-menu {
+.user-dropdown-menu {
   position: absolute;
   top: 60px;
-  right: 76px;
-  background-color: #ff9020;
-  padding: 4px 8px;
-  border-radius: 4px;
+  right: 120px;
+  background-color: white;
+  padding: 0px 8px;
+  padding-bottom: 16px;
+  border-radius: 2px;
   box-shadow: 0px 10px 19px 0px rgba(0, 0, 0, 0.83);
+  color: black;
 
-  .user-details {
-    padding-bottom: 4px;
-    border-bottom: 1px solid white;
+  .customer-name {
+    color: #006da3;
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+  }
+
+  .login-title {
+    color: #006da3;
+    text-align: center;
   }
 }

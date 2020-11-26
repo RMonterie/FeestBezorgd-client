@@ -1,8 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import {
-  removeProductFromCart,
-  clearCart,
-} from "../../redux/actions/cartActions";
+import { clearCart } from "../../redux/actions/cartActions";
 import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 
 /**
@@ -19,12 +16,12 @@ const ShoppingCart = () => {
       <h3>Shopping Cart</h3>
       <div>
         {cartItems?.length ? (
-          cartItems.map((item) => {
+          cartItems.map((item, index) => {
             return (
               <ShoppingCartItem
                 name={item.name}
                 price={item.price}
-                index={cartItems.indexOf(item)}
+                index={index}
               />
             );
           })

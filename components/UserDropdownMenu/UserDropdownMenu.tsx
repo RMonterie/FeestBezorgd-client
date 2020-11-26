@@ -21,20 +21,19 @@ const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
 }) => {
   const dispatch = useDispatch();
   return (
-    <div className="dropdown-menu">
+    <div className="user-dropdown-menu">
       {authenticated ? (
         <>
           <div className="user-details">
-            <h3>{name}</h3>
-            <p>{address}</p>
-            <p>{email}</p>
+            <h3 className="customer-name">{name}</h3>
           </div>
           <p>My orders</p>
-          <p>Edit my data</p>
+          <p>Edit my details</p>
           <button onClick={() => dispatch(deAuthenticate())}>Log out</button>
         </>
       ) : (
         <>
+          <h3 className="login-title">Login</h3>
           <LoginForm buttonText="Login" />
           <p>
             Don't have an account? Register{" "}
