@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-import { deAuthenticate } from "../../../redux/actions/authActions";
 import NavLinkItem from "../../NavBar/NavLinkItem/NavLinkItem";
 import PageLink from "../PageLink";
 import NavBar from "../../NavBar/NavBar";
 
 import "./PageHeader.scss";
 import NavDropdownItem from "../../NavBar/NavDropdownItem/NavDropdownItem";
-import DropdownMenu from "../../DropdownMenu";
+import UserDropDownMenu from "../../UserDropdownMenu";
+import ShoppingCartDropdownMenu from "../../ShoppingCartDropdownMenu";
 
 /**
  * Page header containing navigation.
@@ -17,52 +19,50 @@ import DropdownMenu from "../../DropdownMenu";
  */
 //TODO Implement the login/register modal to here
 const PageHeader = () => {
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const dispatch = useDispatch();
-  // const isAuthenticated = useSelector(
-  //   (state) => state.authentication.isAuthenticated
-  // );
+  const [user, setUser] = useState({ name: "", address: "", email: "" });
+  const isAuthenticated = useSelector(
+    (state) => state.authentication.isAuthenticated
+  );
 
-  // const logOutHandler = () => {
-  //   dispatch(deAuthenticate());
-  //   localStorage.clear();
-  // };
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setUser(JSON.parse(localStorage.getItem("user")));
+    }
+  }, []);
 
   return (
     <header id="page-header">
-      {/* <nav>
-        <PageLink to="/" className="title">
-          Feestbezorgd
-        </PageLink>
-        <ul className="nav">
-          {!isAuthenticated == true && (
-            <li>
-              <PageLink to="/login">Login</PageLink>
-            </li>
-          )}
-          <li>
-            <PageLink to="/caterers">Caterers</PageLink>
-          </li>
-        </ul>
-        <div
-          onClick={() => setModalIsOpen(!modalIsOpen)}
-          className="open-modal"
-        >
-          OPEN THE MODAL
-        </div>
-      </nav>
-      {isAuthenticated == true && (
-        <button onClick={logOutHandler}>Log out</button>
-      )}
-      {modalIsOpen && <div>de modal is wahed open</div>} */}
       <div className="title">
-        <PageLink to="/">FeestBezorgd</PageLink>
+        <PageLink to="/">Feestbezorgd</PageLink>
       </div>
       <div>
         <NavBar>
           <NavLinkItem to="/products" label="My Products" />
           <NavLinkItem to="/caterers" label="Caterers" />
-          <NavDropdownItem label="🙍‍♂️" dropdown={<DropdownMenu />} />
+          {isAuthenticated ? (
+            <NavDropdownItem
+              label={`${user.name}`}
+              icon={<FontAwesomeIcon icon={faUser} />}
+              dropdown={
+                <UserDropDownMenu
+                  authenticated={true}
+                  name={user.name}
+                  address={user.address}
+                  email={user.email}
+                />
+              }
+            />
+          ) : (
+            <NavDropdownItem
+              label={`Log in`}
+              icon={<FontAwesomeIcon icon={faUser} />}
+              dropdown={<UserDropDownMenu authenticated={false} />}
+            />
+          )}
+          <NavDropdownItem
+            icon={<FontAwesomeIcon icon={faShoppingCart} />}
+            dropdown={<ShoppingCartDropdownMenu />}
+          />
         </NavBar>
       </div>
     </header>

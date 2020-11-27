@@ -3,6 +3,11 @@ import BaseLayout from "../../layout/BaseLayout";
 
 import "./RegisterPage.scss";
 
+/**
+ * Page that contains the register form.
+ *
+ * @returns {JSX.Element}
+ */
 const RegisterPage = () => {
   return (
     <BaseLayout title="Register">

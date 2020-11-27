@@ -2,14 +2,21 @@ import { useState } from "react";
 
 import "./NavDropdownItem.scss";
 
-interface navDropdownItemProps {
+interface NavDropdownItemProps {
   dropdown: React.ReactNode;
-  label: string;
+  label?: string;
+  icon: React.ReactNode;
 }
 
-const NavDropdownItem: React.FC<navDropdownItemProps> = ({
+/**
+ * Component that opens and closes given dropdown onClick.
+ *
+ * @returns {JSX.Element}
+ */
+const NavDropdownItem: React.FC<NavDropdownItemProps> = ({
   dropdown,
   label,
+  icon,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   if (!dropdown) {
@@ -19,6 +26,7 @@ const NavDropdownItem: React.FC<navDropdownItemProps> = ({
   return (
     <li>
       <span onClick={() => setIsOpen(!isOpen)} className="dropdown-button">
+        <i>{icon}</i>
         {label}
       </span>
       {isOpen && dropdown}

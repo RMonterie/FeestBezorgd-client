@@ -1,34 +1,33 @@
 import { useSelector, useDispatch } from "react-redux";
-import {
-  removeProductFromCart,
-  clearCart,
-} from "../../redux/actions/cartActions";
+import { clearCart } from "../../redux/actions/cartActions";
+import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 
-//TODO: Make the shopping cart render out a list of ShoppingCartItems instead of hardcoded divs
+/**
+ * Component that displays items in the shopping cart from the redux store.
+ *
+ * @returns {JSX.Element}
+ */
 const ShoppingCart = () => {
   const cartItems = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
+  console.log("cartitems", cartItems);
   return (
     <div>
-      <h2>Products in shopping cart</h2>
+      <h3>Shopping Cart</h3>
       <div>
-        {cartItems.length != 0 &&
-          cartItems.map((item) => {
+        {cartItems?.length ? (
+          cartItems.map((item, index) => {
             return (
-              <div>
-                <p>{item.name}</p>
-                <p>{`€${item.price}`}</p>
-                <p>{cartItems.indexOf(item)}</p>
-                <button
-                  onClick={() =>
-                    dispatch(removeProductFromCart(cartItems.indexOf(item)))
-                  }
-                >
-                  Delete🗑
-                </button>
-              </div>
+              <ShoppingCartItem
+                name={item.name}
+                price={item.price}
+                index={index}
+              />
             );
-          })}
+          })
+        ) : (
+          <h4>You don't have any items in your shopping cart!</h4>
+        )}
         <button onClick={() => dispatch(clearCart())}>
           Clear the shopping cart
         </button>

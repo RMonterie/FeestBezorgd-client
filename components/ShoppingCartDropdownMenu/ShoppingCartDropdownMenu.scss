@@ -1,9 +1,14 @@
-.dropdown-menu {
+.shoppingcart-dropdown {
   position: absolute;
   top: 60px;
   right: 4px;
-  background-color: orange;
+  background-color: white;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 1px;
   box-shadow: 0px 10px 19px 0px rgba(0, 0, 0, 0.83);
+  color: black;
+
+  h3 {
+    color: #006da3;
+  }
 }

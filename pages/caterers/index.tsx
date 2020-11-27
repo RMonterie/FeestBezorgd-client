@@ -5,6 +5,11 @@ import { getAllCaterers } from "../../api/caterers/catererMethods";
 
 import BaseLayout from "../../layout/BaseLayout";
 
+/**
+ * Page that displays all the caterers.
+ *
+ * @returns {JSX.Element}
+ */
 const CaterersPage = () => {
   const [caterers, setCaterers] = useState([]);
 

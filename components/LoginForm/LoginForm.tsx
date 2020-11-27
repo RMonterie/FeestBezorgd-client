@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import Router from "next/router";
 
 import { authenticate } from "../../redux/actions/authActions";
 import { login } from "../../api/user/authMethods";
@@ -11,8 +10,13 @@ interface LoginFormProps {
   buttonText: string;
 }
 
-//TODO Move this form to the header
 //TODO Add validation to this form
+/**
+ * Component that renders a form and calls the login function
+ * with the provided form details.
+ *
+ * @returns {JSX.Element}
+ */
 const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +36,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
 
     if (succesfulLogin) {
       dispatch(authenticate());
-      Router.push("/");
     }
   };
 
