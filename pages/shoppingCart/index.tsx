@@ -4,6 +4,12 @@ import BaseLayout from "../../layout/BaseLayout";
 
 import "./ShoppingCartPage.scss";
 
+/**
+ * Page that displays the shopping cart and acts as gateway to
+ * the checkout.
+ *
+ * @returns {JSX.Element}
+ */
 const ShoppingCartPage = () => {
   return (
     <BaseLayout title="Your order">

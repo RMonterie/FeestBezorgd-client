@@ -3,9 +3,13 @@ import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 
 import "./ShoppingCart.scss";
 
+/**
+ * Shopping cart for the shopping cart page.
+ *
+ * @returns {JSX.Element}
+ */
 const ShoppingCart = () => {
   const cartItems = useSelector((state) => state.cart.products);
-  const price = useSelector((state) => state.cart.total);
   return (
     <ul className="cart">
       {cartItems?.length ? (

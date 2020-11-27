@@ -3,6 +3,11 @@ import { useSelector } from "react-redux";
 
 import "./CartSummary.scss";
 
+/**
+ * Summary of the price of all the shopping cart items
+ *
+ * @returns {JSX.Element}
+ */
 export const CartSummary = () => {
   const totalPrice = useSelector((state) => state.cart.total);
 
