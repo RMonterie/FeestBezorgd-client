@@ -1,38 +1,28 @@
-import { useSelector, useDispatch } from "react-redux";
-import { clearCart } from "../../redux/actions/cartActions";
+import { useSelector } from "react-redux";
 import ShoppingCartItem from "./ShoppingCartItem/ShoppingCartItem";
 
-/**
- * Component that displays items in the shopping cart from the redux store.
- *
- * @returns {JSX.Element}
- */
+import "./ShoppingCart.scss";
+
 const ShoppingCart = () => {
   const cartItems = useSelector((state) => state.cart.products);
-  const dispatch = useDispatch();
-  console.log("cartitems", cartItems);
+  const price = useSelector((state) => state.cart.total);
   return (
-    <div>
-      <h3>Shopping Cart</h3>
-      <div>
-        {cartItems?.length ? (
-          cartItems.map((item, index) => {
-            return (
-              <ShoppingCartItem
-                name={item.name}
-                price={item.price}
-                index={index}
-              />
-            );
-          })
-        ) : (
-          <h4>You don't have any items in your shopping cart!</h4>
-        )}
-        <button onClick={() => dispatch(clearCart())}>
-          Clear the shopping cart
-        </button>
-      </div>
-    </div>
+    <ul className="cart">
+      {cartItems?.length ? (
+        cartItems.map((item, index) => {
+          return (
+            <ShoppingCartItem
+              key={index}
+              name={item.name}
+              price={item.price}
+              index={index}
+            />
+          );
+        })
+      ) : (
+        <h1>It seems there are no items in your shopping cart...</h1>
+      )}
+    </ul>
   );
 };
 

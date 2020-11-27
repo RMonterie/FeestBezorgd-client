@@ -12,8 +12,8 @@ const CatererList = ({ caterers }) => {
   return (
     <div className="list-container">
       <div>
-        {caterers.map((caterer) => (
-          <CatererListItem key={caterer.id} catererName={caterer.username} />
+        {caterers.map((caterer, index) => (
+          <CatererListItem key={index} catererName={caterer.username} />
         ))}
       </div>
     </div>

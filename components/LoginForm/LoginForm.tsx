@@ -32,7 +32,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     const succesfulLogin = await login(username, password);
-    console.log(succesfulLogin);
 
     if (succesfulLogin) {
       dispatch(authenticate());

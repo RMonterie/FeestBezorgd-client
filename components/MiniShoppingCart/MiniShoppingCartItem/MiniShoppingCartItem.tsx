@@ -4,31 +4,36 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 import { removeProductFromCart } from "../../../redux/actions/cartActions";
 
-import "./ShoppingCartItem.scss";
-interface ShoppingCartItemProps {
+import "./MiniShoppingCartItem.scss";
+
+interface MiniShoppingCartItemProps {
   name: string;
   price: number;
   index: number;
 }
 
-const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
+/**
+ * Component that displays a single item in the shopping cart.
+ *
+ * @returns {JSX.Element}
+ */
+const MiniShoppingCartItem: React.FC<MiniShoppingCartItemProps> = ({
   name,
   price,
   index,
 }) => {
   const dispatch = useDispatch();
   return (
-    <li className="shoppingcart-item">
+    <div className="mini-shoppingcart-item-container">
       <div>
-        <h2>{name}</h2>
+        <p className="product-name">{name}</p>
         <p>{`€${price},-`}</p>
-        <p>Amount: 10</p>
       </div>
       <button onClick={() => dispatch(removeProductFromCart(index))}>
         <FontAwesomeIcon icon={faTrashAlt} />
       </button>
-    </li>
+    </div>
   );
 };
 
-export default ShoppingCartItem;
+export default MiniShoppingCartItem;

@@ -10,7 +10,7 @@ import NavBar from "../../NavBar/NavBar";
 import "./PageHeader.scss";
 import NavDropdownItem from "../../NavBar/NavDropdownItem/NavDropdownItem";
 import UserDropDownMenu from "../../UserDropdownMenu";
-import ShoppingCartDropdownMenu from "../../ShoppingCartDropdownMenu";
+import MiniShoppingCartDropdownMenu from "../../MiniShoppingCartDropdownMenu";
 
 /**
  * Page header containing navigation.
@@ -60,7 +60,7 @@ const PageHeader = () => {
           )}
           <NavDropdownItem
             icon={<FontAwesomeIcon icon={faShoppingCart} />}
-            dropdown={<ShoppingCartDropdownMenu />}
+            dropdown={<MiniShoppingCartDropdownMenu />}
           />
         </NavBar>
       </div>
