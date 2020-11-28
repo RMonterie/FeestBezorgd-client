@@ -8,7 +8,7 @@ import "./CartSummary.scss";
  *
  * @returns {JSX.Element}
  */
-export const CartSummary = () => {
+export const CartSummary: React.FC = () => {
   const totalPrice = useSelector((state) => state.cart.total);
 
   return (

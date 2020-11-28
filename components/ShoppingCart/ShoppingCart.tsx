@@ -8,7 +8,7 @@ import "./ShoppingCart.scss";
  *
  * @returns {JSX.Element}
  */
-const ShoppingCart = () => {
+const ShoppingCart: React.FC = () => {
   const cartItems = useSelector((state) => state.cart.products);
   return (
     <ul className="cart">

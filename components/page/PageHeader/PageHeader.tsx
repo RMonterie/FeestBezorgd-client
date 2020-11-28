@@ -18,7 +18,7 @@ import MiniShoppingCartDropdownMenu from "../../MiniShoppingCartDropdownMenu";
  * @returns {JSX.Element}
  */
 //TODO Implement the login/register modal to here
-const PageHeader = () => {
+const PageHeader: React.FC = () => {
   const [user, setUser] = useState({ name: "", address: "", email: "" });
   const isAuthenticated = useSelector(
     (state) => state.authentication.isAuthenticated

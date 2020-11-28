@@ -9,7 +9,7 @@ import "./RegisterForm.scss";
 
 //TODO Add validation to form
 //TODO Move this form to the header
-const RegisterForm = () => {
+const RegisterForm: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();

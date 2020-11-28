@@ -41,7 +41,7 @@ const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
       ) : (
         <>
           <h3 className="login-title">Login</h3>
-          <LoginForm buttonText="Login" />
+          <LoginForm />
           <p>
             Don't have an account? Register{" "}
             <PageLink to="/register" className="link">

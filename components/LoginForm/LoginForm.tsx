@@ -6,10 +6,6 @@ import { login } from "../../api/user/authMethods";
 
 import "./LoginForm.scss";
 
-interface LoginFormProps {
-  buttonText: string;
-}
-
 //TODO Add validation to this form
 /**
  * Component that renders a form and calls the login function
@@ -17,7 +13,7 @@ interface LoginFormProps {
  *
  * @returns {JSX.Element}
  */
-const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
+const LoginForm: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -53,7 +49,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
           name="password"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button type="submit">{buttonText}</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );

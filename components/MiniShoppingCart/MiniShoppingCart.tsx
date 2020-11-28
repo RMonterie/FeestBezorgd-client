@@ -6,7 +6,7 @@ import MiniShoppingCartItem from "./MiniShoppingCartItem/MiniShoppingCartItem";
  *
  * @returns {JSX.Element}
  */
-const MiniShoppingCart = () => {
+const MiniShoppingCart: React.FC = () => {
   const cartItems = useSelector((state) => state.cart.products);
   return (
     <div>

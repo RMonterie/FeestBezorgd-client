@@ -10,7 +10,7 @@ import "./MiniShoppingCartDropdownMenu.scss";
  *
  * @returns {JSX.Element}
  */
-const MiniShoppingCartDropdownMenu = () => {
+const MiniShoppingCartDropdownMenu: React.FC = () => {
   const totalPrice = useSelector((state) => state.cart.total);
   const onClickHandler = () => {
     Router.push("/shoppingCart");
