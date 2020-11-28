@@ -1,8 +1,5 @@
 import "./ProductForm.scss";
 
-import axios from "axios";
-
-import { baseUrl } from "../../constants";
 import { addProductToCatalogue } from "../../api/caterers/catererMethods";
 
 const ProductForm = () => {

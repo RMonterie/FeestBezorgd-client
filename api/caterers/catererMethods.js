@@ -37,4 +37,6 @@ export const addProductToCatalogue = async (name, price) => {
       return response;
     }
   }
+
+  return;
 };
