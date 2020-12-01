@@ -1,5 +1,6 @@
 import Router from "next/router";
 import { useSelector } from "react-redux";
+import Button from "../Button";
 
 import MiniShoppingCart from "../MiniShoppingCart";
 
@@ -24,9 +25,9 @@ const MiniShoppingCartDropdownMenu: React.FC = () => {
           <p className="total-price-title">{`Total price: `}</p>
           <p>{`€${totalPrice},-`}</p>
         </div>
-        <button onClick={onClickHandler} className="order-button">
-          Order
-        </button>
+        <div className="order-button">
+          <Button onClick={onClickHandler} text="Order" />
+        </div>
       </div>
       <MiniShoppingCart />
     </div>

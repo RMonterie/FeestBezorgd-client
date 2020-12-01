@@ -5,6 +5,7 @@ import { authenticate } from "../../redux/actions/authActions";
 import { login } from "../../api/user/authMethods";
 
 import "./LoginForm.scss";
+import Button from "../Button";
 
 //TODO Add validation to this form
 /**
@@ -49,7 +50,7 @@ const LoginForm: React.FC = () => {
           name="password"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button type="submit">Login</button>
+        <Button type="submit" style="btn--primary--solid" text="Login" />
       </form>
     </div>
   );

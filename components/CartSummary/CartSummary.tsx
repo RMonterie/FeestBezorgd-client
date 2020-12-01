@@ -1,5 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+import Button from "../Button";
 
 import "./CartSummary.scss";
 
@@ -15,7 +19,11 @@ export const CartSummary: React.FC = () => {
     <div className="cart-summary">
       <h1>Your total price:</h1>
       <h2>{`€${totalPrice},-`}</h2>
-      <button>Place your order</button>
+      <Button
+        style="btn--success--solid"
+        icon={<FontAwesomeIcon icon={faShoppingCart} />}
+        text="Check out"
+      />
     </div>
   );
 };

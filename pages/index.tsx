@@ -6,9 +6,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import BaseLayout from "../layout/BaseLayout";
+import IconCard from "../components/IconCard";
+import Button from "../components/Button";
 
 import "./LandingPage.scss";
-import IconCard from "../components/IconCard";
 
 /**
  * Home page.
@@ -51,7 +52,7 @@ export default function Home() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <button>Click me</button>
+          <Button style="btn--primary--solid" text="Click me" />
         </div>
       </div>
     </BaseLayout>

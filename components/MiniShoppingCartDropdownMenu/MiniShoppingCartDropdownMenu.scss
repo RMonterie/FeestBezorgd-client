@@ -1,3 +1,5 @@
+@import "../../theme/config";
+
 .mini-shoppingcart-dropdown {
   position: absolute;
   top: 60px;
@@ -10,6 +12,7 @@
   max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 80;
 
   .mini-shoppingcart-dropdown-title {
     position: sticky;
@@ -34,6 +37,6 @@
   }
 
   h3 {
-    color: #006da3;
+    color: $FEESTBEZORGD_DARK_BLUE;
   }
 }

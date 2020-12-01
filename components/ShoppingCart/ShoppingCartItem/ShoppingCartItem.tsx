@@ -5,6 +5,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { removeProductFromCart } from "../../../redux/actions/cartActions";
 
 import "./ShoppingCartItem.scss";
+import Button from "../../Button";
 interface ShoppingCartItemProps {
   name: string;
   price: number;
@@ -22,6 +23,11 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
   index,
 }) => {
   const dispatch = useDispatch();
+
+  const onClickHandler = () => {
+    dispatch(removeProductFromCart(index));
+  };
+
   return (
     <li className="shoppingcart-item">
       <div>
@@ -29,9 +35,11 @@ const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
         <p>{`€${price},-`}</p>
         <p>Amount: 10</p>
       </div>
-      <button onClick={() => dispatch(removeProductFromCart(index))}>
-        <FontAwesomeIcon icon={faTrashAlt} />
-      </button>
+      <Button
+        style="btn--secondary--solid"
+        onClick={onClickHandler}
+        icon={<FontAwesomeIcon icon={faTrashAlt} />}
+      />
     </li>
   );
 };

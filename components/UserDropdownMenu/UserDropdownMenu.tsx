@@ -36,7 +36,10 @@ const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
           </div>
           <p>My orders</p>
           <p>Edit my details</p>
-          <button onClick={() => dispatch(deAuthenticate())}>Log out</button>
+          {/* <button onClick={() => dispatch(deAuthenticate())}>Log out</button> */}
+          <p onClick={() => dispatch(deAuthenticate())} className="logout">
+            Log out
+          </p>
         </>
       ) : (
         <>
