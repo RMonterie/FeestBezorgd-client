@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { authenticate } from "../../redux/actions/authActions";
-import { login } from "../../api/user/authMethods";
+import { authenticate } from "../../../redux/actions/authActions";
+import { login } from "../../../api/user/authMethods";
 
 import "./LoginForm.scss";
-import Button from "../Button";
+import Button from "../../Button";
 
 //TODO Add validation to this form
 /**
@@ -17,6 +17,7 @@ import Button from "../Button";
 const LoginForm: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
   /**
@@ -32,6 +33,8 @@ const LoginForm: React.FC = () => {
 
     if (succesfulLogin) {
       dispatch(authenticate());
+    } else {
+      setError(true);
     }
   };
 
@@ -50,6 +53,11 @@ const LoginForm: React.FC = () => {
           name="password"
           onChange={(event) => setPassword(event.target.value)}
         />
+        {error && (
+          <p className="login-error">
+            The provided username/password was not correct
+          </p>
+        )}
         <Button type="submit" style="btn--primary--solid" text="Login" />
       </form>
     </div>

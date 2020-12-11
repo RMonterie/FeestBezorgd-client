@@ -2,16 +2,18 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Router from "next/router";
 
-import { authenticate } from "../../redux/actions/authActions";
-import { register } from "../../api/user/authMethods";
+import { authenticate } from "../../../redux/actions/authActions";
+import { register } from "../../../api/user/authMethods";
 
 import "./RegisterForm.scss";
+import TextInput from "../../Inputs/TextInput/TextInput";
 
 //TODO Add validation to form
 //TODO Move this form to the header
 const RegisterForm: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
   /**
@@ -30,6 +32,8 @@ const RegisterForm: React.FC = () => {
     if (successfulRegister) {
       dispatch(authenticate());
       Router.push("/");
+    } else {
+      setError(true);
     }
   };
 
@@ -48,7 +52,15 @@ const RegisterForm: React.FC = () => {
           name="password"
           onChange={(event) => setPassword(event.target.value)}
         />
+        {error && <p>Something went wrong with submitting your form!</p>}
         <button type="submit">Register</button>
+        <TextInput
+          label="test"
+          name="test"
+          position="center"
+          onChangeHandler={(event) => setUsername(event.target.value)}
+          value={username}
+        />
       </form>
     </div>
   );

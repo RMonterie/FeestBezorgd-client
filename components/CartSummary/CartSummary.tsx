@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../Button";
+import PageLink from "../page/PageLink";
 
 import "./CartSummary.scss";
 
@@ -19,11 +20,15 @@ export const CartSummary: React.FC = () => {
     <div className="cart-summary">
       <h1>Your total price:</h1>
       <h2>{`€${totalPrice},-`}</h2>
-      <Button
-        style="btn--success--solid"
-        icon={<FontAwesomeIcon icon={faShoppingCart} />}
-        text="Check out"
-      />
+      <PageLink to="/checkout">
+        <Button
+          style="btn--success--solid"
+          icon={<FontAwesomeIcon icon={faShoppingCart} />}
+          text="Check out"
+        />
+      </PageLink>
+      <h3>Enter discount code</h3>
+      <input type="text" placeholder="Discount Code" />
     </div>
   );
 };

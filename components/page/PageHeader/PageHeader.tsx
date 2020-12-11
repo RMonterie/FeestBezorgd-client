@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +9,7 @@ import NavBar from "../../NavBar/NavBar";
 
 import "./PageHeader.scss";
 import NavDropdownItem from "../../NavBar/NavDropdownItem/NavDropdownItem";
+import CartDropdownItem from "../../NavBar/CartDropdownItem/CartDropdownItem";
 import UserDropDownMenu from "../../UserDropdownMenu";
 import MiniShoppingCartDropdownMenu from "../../MiniShoppingCartDropdownMenu";
 
@@ -23,6 +24,7 @@ const PageHeader: React.FC = () => {
   const isAuthenticated = useSelector(
     (state) => state.authentication.isAuthenticated
   );
+  const cartItems = useSelector((state) => state.cart.products?.length);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -58,9 +60,13 @@ const PageHeader: React.FC = () => {
               dropdown={<UserDropDownMenu authenticated={false} />}
             />
           )}
-          <NavDropdownItem
+          {/* <NavDropdownItem
             icon={<FontAwesomeIcon icon={faShoppingCart} />}
             dropdown={<MiniShoppingCartDropdownMenu />}
+          /> */}
+          <CartDropdownItem
+            dropdown={<MiniShoppingCartDropdownMenu />}
+            cartItemLength={cartItems}
           />
         </NavBar>
       </div>

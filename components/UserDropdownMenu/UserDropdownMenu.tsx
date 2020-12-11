@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
 import { deAuthenticate } from "../../redux/actions/authActions";
-import LoginForm from "../LoginForm";
+import LoginForm from "../Forms/LoginForm";
 import PageLink from "../page/PageLink";
 
 import "./UserDropdownMenu.scss";

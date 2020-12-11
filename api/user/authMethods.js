@@ -11,22 +11,26 @@ import { baseUrl } from "../../constants";
  * @returns {boolean}
  */
 export const login = async (username, password) => {
-  const response = await axios.post(`${baseUrl}/authenticate`, {
-    username,
-    password,
-  });
+  try {
+    const response = await axios.post(`${baseUrl}/authenticate`, {
+      username,
+      password,
+    });
 
-  if (!response.data.jwt || response.status !== 200) {
+    if (!response.data.jwt || response.status !== 200) {
+      console.log(TEST, "test");
+    }
+
+    const user = JSON.stringify(response.data.userDetailsForm);
+    const jwt = response.data.jwt;
+
+    localStorage.setItem("user", user);
+    localStorage.setItem("jwt", jwt);
+
+    return true;
+  } catch (error) {
     return;
   }
-
-  const user = JSON.stringify(response.data.userDetailsForm);
-  const jwt = response.data.jwt;
-
-  localStorage.setItem("user", user);
-  localStorage.setItem("jwt", jwt);
-
-  return true;
 };
 
 /**
@@ -39,20 +43,24 @@ export const login = async (username, password) => {
  * @returns {boolean}
  */
 export const register = async (username, password) => {
-  const response = await axios.post(`${baseUrl}/registerCustomer`, {
-    username,
-    password,
-  });
+  try {
+    const response = await axios.post(`${baseUrl}/registerCustomer`, {
+      username,
+      password,
+    });
 
-  if (response.status !== 200) {
+    if (response.status !== 200) {
+      return;
+    }
+
+    const successfulLogin = await login(username, password);
+
+    if (successfulLogin) {
+      return true;
+    }
+
+    return;
+  } catch (error) {
     return;
   }
-
-  const successfulLogin = await login(username, password);
-
-  if (successfulLogin) {
-    return true;
-  }
-
-  return;
 };

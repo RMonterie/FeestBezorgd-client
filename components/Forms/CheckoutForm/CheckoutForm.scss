@@ -1,0 +1,42 @@
+.checkout-form {
+  margin: 8px;
+  margin-left: 60px;
+  padding: 12px;
+  max-height: 600px;
+  width: 40%;
+  border-bottom: 1px solid black;
+
+  .left-input {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 16px;
+    label,
+    input {
+      display: block;
+    }
+  }
+
+  .right-input {
+    margin-bottom: 16px;
+    label,
+    input {
+      display: block;
+    }
+  }
+
+  .single-input {
+    margin-bottom: 16px;
+    label,
+    input {
+      display: block;
+    }
+  }
+
+  button {
+    margin: 8px 4px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 60px;
+    height: 40px;
+  }
+}
