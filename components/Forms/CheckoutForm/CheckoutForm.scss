@@ -6,6 +6,12 @@
   width: 40%;
   border-bottom: 1px solid black;
 
+  .back-button {
+    color: #006da3;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
   .left-input {
     float: left;
     margin-right: 20px;

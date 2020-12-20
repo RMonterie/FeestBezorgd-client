@@ -1,6 +1,9 @@
 .register-container {
   display: flex;
   justify-content: center;
+  background: whitesmoke;
+  padding: 24px 64px;
+  border-radius: 8px;
 
   form {
     display: flex;

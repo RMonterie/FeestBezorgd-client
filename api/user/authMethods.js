@@ -42,7 +42,7 @@ export const login = async (username, password) => {
  *
  * @returns {boolean}
  */
-export const register = async (username, password) => {
+export const registerCustomer = async (username, password) => {
   try {
     const response = await axios.post(`${baseUrl}/registerCustomer`, {
       username,

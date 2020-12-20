@@ -1,6 +1,9 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import Router from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIdeal, faPaypal } from "@fortawesome/free-brands-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../../Button";
 
@@ -12,18 +15,32 @@ import "./CheckoutForm.scss";
  * @returns {JSX.Element}
  */
 const CheckoutForm: React.FC = () => {
+  const { register, handleSubmit, watch, errors } = useForm();
+  const onSubmit = (data) => console.log(data);
+
+  console.log(watch("name"));
+
   return (
     <div className="checkout-form">
-      <form>
+      <span onClick={() => Router.back()} className="back-button">
+        <FontAwesomeIcon icon={faChevronLeft} />
+        Cancel checkout
+      </span>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Please enter your details</h2>
         <h3>Personal information</h3>
         <div className="left-input">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" />
+          <input type="text" name="name" defaultValue="test" ref={register} />
         </div>
         <div className="right-input">
           <label htmlFor="surname">Surname</label>
-          <input type="text" name="surname" />
+          <input
+            type="text"
+            name="surname"
+            ref={register({ required: true })}
+          />
+          {errors.surname && <span>This field is required</span>}
         </div>
         <div className="single-input">
           <label htmlFor="email">Email</label>
@@ -57,6 +74,7 @@ const CheckoutForm: React.FC = () => {
         icon={<FontAwesomeIcon icon={faPaypal} />}
         style="btn--primary--solid"
       />
+      <button type="submit">Submit</button>
     </div>
   );
 };
