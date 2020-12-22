@@ -4,12 +4,13 @@ import { addProductToCatalogue } from "../../api/caterers/catererMethods";
 
 import "./ProductForm.scss";
 
-const ProductForm = () => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
+const ProductForm = ({ productName, productPrice }) => {
+  const [name, setName] = useState(productName);
+  const [price, setPrice] = useState(productPrice);
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
+    console.log("Adding product");
     addProductToCatalogue(name, price);
   };
 
@@ -20,6 +21,7 @@ const ProductForm = () => {
         <input
           type="text"
           name="productName"
+          value={name}
           onChange={(event) => {
             setName(event.target.value);
           }}
@@ -29,6 +31,7 @@ const ProductForm = () => {
         <input
           type="integer"
           name="productPrice"
+          value={price}
           onChange={(event) => {
             setPrice(event.target.value);
           }}

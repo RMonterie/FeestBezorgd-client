@@ -42,13 +42,38 @@ export const getSingleCaterer = async () => {
 
 export const addProductToCatalogue = async (name, price) => {
   const token = localStorage.getItem("jwt");
+  let caterer = JSON.parse(localStorage.getItem("user"));
+  let catererUsername = caterer.username;
 
   if (token !== null) {
     const response = await axios.post(`${baseUrl}/caterers/products`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      catererUsername: "admin",
+      catererUsername: catererUsername,
+      name,
+      price,
+    });
+
+    if (response !== null) {
+      return response;
+    }
+  }
+
+  return;
+};
+
+export const removeProductFromCatalogue = async (name, price) => {
+  const token = localStorage.getItem("jwt");
+  let caterer = JSON.parse(localStorage.getItem("user"));
+  let catererUsername = caterer.username;
+
+  if (token !== null) {
+    const response = await axios.post(`${baseUrl}/caterers/products/delete`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      catererUsername: catererUsername,
       name,
       price,
     });
