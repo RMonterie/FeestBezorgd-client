@@ -5,20 +5,15 @@ import {
   editProductFromCatalogue,
 } from "../../api/caterers/catererMethods";
 
-import "./ProductForm.scss";
-
 const ProductForm = ({ productId, productName, productPrice, edit }) => {
   const [name, setName] = useState(productName);
   const [price, setPrice] = useState(productPrice);
-  const id = productId;
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     if (edit) {
-      console.log("Edit product");
       editProductFromCatalogue(productId, name, price);
     } else {
-      console.log("Adding product");
       addProductToCatalogue(name, price);
     }
   };

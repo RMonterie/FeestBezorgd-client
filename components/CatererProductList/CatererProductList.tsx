@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
+
 import { removeProductFromCatalogue } from "../../api/caterers/catererMethods";
+
 import ProductForm from "../ProductForm";
 
 const CatererProductList = ({ catererProducts }) => {
@@ -11,15 +13,12 @@ const CatererProductList = ({ catererProducts }) => {
 
   const onClickHandler = async (event) => {
     event.preventDefault();
-    console.log("PRINT");
     setShowEditProduct(false);
   };
 
   const onClickDeleteHandler = async (name, price) => {
     event.preventDefault();
     removeProductFromCatalogue(name, price);
-
-    console.log("DELETE PRODUCT");
     setShowDeleteProduct(false);
   };
 

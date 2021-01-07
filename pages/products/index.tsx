@@ -1,4 +1,3 @@
-import { faBrush } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 
@@ -17,7 +16,6 @@ const Products = () => {
       const caterer = await getCurrentCaterer();
       if (caterer) {
         setCatererProducts(caterer.data.products);
-        console.log(catererProducts);
       }
     };
 
@@ -26,7 +24,6 @@ const Products = () => {
 
   const onClickHandler = async (event) => {
     event.preventDefault();
-    console.log("PRINT");
     setShowAddProduct(true);
   };
 
