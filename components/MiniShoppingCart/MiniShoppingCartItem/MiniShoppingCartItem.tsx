@@ -9,6 +9,7 @@ import "./MiniShoppingCartItem.scss";
 interface MiniShoppingCartItemProps {
   name: string;
   price: number;
+  quantity: number;
   index: number;
 }
 
@@ -20,6 +21,7 @@ interface MiniShoppingCartItemProps {
 const MiniShoppingCartItem: React.FC<MiniShoppingCartItemProps> = ({
   name,
   price,
+  quantity,
   index,
 }) => {
   const dispatch = useDispatch();
@@ -28,6 +30,7 @@ const MiniShoppingCartItem: React.FC<MiniShoppingCartItemProps> = ({
       <div>
         <p className="product-name">{name}</p>
         <p>{`€${price},-`}</p>
+        <p>{`Quantity: ${quantity}`}</p>
       </div>
       <button onClick={() => dispatch(removeProductFromCart(index))}>
         <FontAwesomeIcon icon={faTrashAlt} />

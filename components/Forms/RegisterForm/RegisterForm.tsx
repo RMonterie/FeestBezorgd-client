@@ -9,14 +9,11 @@ import { authenticate } from "../../../redux/actions/authActions";
 import { registerCustomer } from "../../../api/user/authMethods";
 
 import "./RegisterForm.scss";
-import TextInput from "../../Inputs/TextInput/TextInput";
 import Button from "../../Button";
 
 //TODO Add validation to form
 //TODO Move this form to the header
 const RegisterForm: React.FC = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [submitError, setSubmitError] = useState(false);
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm({ mode: "onBlur" });

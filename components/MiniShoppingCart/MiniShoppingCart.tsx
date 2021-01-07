@@ -18,6 +18,7 @@ const MiniShoppingCart: React.FC = () => {
                 key={index}
                 name={item.name}
                 price={item.price}
+                quantity={item.quantity}
                 index={index}
               />
             );

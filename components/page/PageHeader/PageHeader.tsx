@@ -60,10 +60,6 @@ const PageHeader: React.FC = () => {
               dropdown={<UserDropDownMenu authenticated={false} />}
             />
           )}
-          {/* <NavDropdownItem
-            icon={<FontAwesomeIcon icon={faShoppingCart} />}
-            dropdown={<MiniShoppingCartDropdownMenu />}
-          /> */}
           <CartDropdownItem
             dropdown={<MiniShoppingCartDropdownMenu />}
             cartItemLength={cartItems}

@@ -14,13 +14,12 @@ const ProductListItem: React.FC<ProductListItemProps> = ({ name, price }) => {
   const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    dispatch(addProductToCart({ name: name, price: price }));
+    dispatch(addProductToCart({ name: name, price: price, quantity: 1 }));
   };
 
   return (
     <div className="product-container">
       <div>
-        {/* <div className="name">{name}</div> */}
         <p className="name">{name}</p>
         <div className="price">{`€${price},-`}</div>
         <Button

@@ -6,6 +6,7 @@ import "./CheckoutSummary.scss";
 const CheckoutSummary = () => {
   const cartItems = useSelector((state) => state.cart.products);
   const totalPrice = useSelector((state) => state.cart.total);
+
   return (
     <div className="checkout-summary">
       <h3>{`Your total price: €${totalPrice},-`}</h3>
