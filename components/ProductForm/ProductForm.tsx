@@ -1,17 +1,34 @@
 import React, { useState } from "react";
 
-import { addProductToCatalogue } from "../../api/caterers/catererMethods";
+import {
+  addProductToCatalogue,
+  editProductFromCatalogue,
+} from "../../api/caterers/catererMethods";
 
 import "./ProductForm.scss";
 
-const ProductForm = ({ productName, productPrice }) => {
+const ProductForm = ({ productId, productName, productPrice, edit }) => {
   const [name, setName] = useState(productName);
   const [price, setPrice] = useState(productPrice);
+  const id = productId;
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log("Adding product");
-    addProductToCatalogue(name, price);
+    if (edit) {
+      console.log("Edit product");
+      editProductFromCatalogue(productId, name, price);
+    } else {
+      console.log("Adding product");
+      addProductToCatalogue(name, price);
+    }
+  };
+
+  const ButtonReturn = () => {
+    if (edit) {
+      return <button type="submit">Edit product</button>;
+    } else {
+      return <button type="submit">Add product</button>;
+    }
   };
 
   return (
@@ -37,7 +54,7 @@ const ProductForm = ({ productName, productPrice }) => {
           }}
         />
 
-        <button type="submit">Add product</button>
+        <ButtonReturn />
       </form>
     </div>
   );

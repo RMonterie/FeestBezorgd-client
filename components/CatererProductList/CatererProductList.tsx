@@ -6,6 +6,8 @@ import ProductForm from "../ProductForm";
 const CatererProductList = ({ catererProducts }) => {
   const [showEditProduct, setShowEditProduct] = useState(false);
   const [showDeleteProduct, setShowDeleteProduct] = useState(false);
+  const [productName, setProductName] = useState();
+  const [productPrice, setProductPrice] = useState();
 
   const onClickHandler = async (event) => {
     event.preventDefault();
@@ -24,40 +26,52 @@ const CatererProductList = ({ catererProducts }) => {
   return (
     <div className="list-container">
       <div>
-        {catererProducts.map((product) => (
-          <div>
-            <h4>
-              {product.name}, {product.price} $
-            </h4>
-
-            <Modal isOpen={showDeleteProduct}>
-              <h2>Are you sure you want to delete this product ?</h2>
-              <div>
-                <button
-                  onClick={() =>
-                    onClickDeleteHandler(product.name, product.price)
-                  }
-                >
-                  Yes
-                </button>
-                <button onClick={() => setShowDeleteProduct(false)}>No</button>
-              </div>
-            </Modal>
-
-            <Modal isOpen={showEditProduct}>
-              <ProductForm
-                productName={product.name}
-                productPrice={product.price}
-              />
-              <div>
-                <button onClick={() => setShowEditProduct(false)}>Close</button>
-              </div>
-            </Modal>
-
-            <button onClick={() => setShowEditProduct(true)}>Edit</button>
-            <button onClick={() => setShowDeleteProduct(true)}>Delete</button>
-          </div>
+        {catererProducts.map((product, index) => (
+          <li key={index}>
+            {product.name}, {product.price} $
+            <button
+              onClick={() => {
+                setShowEditProduct(true);
+                setProductName(product.name);
+                setProductPrice(product.price);
+              }}
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => {
+                setShowDeleteProduct(true);
+                setProductName(product.name);
+                setProductPrice(product.price);
+              }}
+            >
+              Delete
+            </button>
+          </li>
         ))}
+
+        <Modal isOpen={showDeleteProduct}>
+          <h2>Are you sure you want to delete this product ?</h2>
+          <div>
+            <button
+              onClick={() => onClickDeleteHandler(productName, productPrice)}
+            >
+              Yes
+            </button>
+            <button onClick={() => setShowDeleteProduct(false)}>No</button>
+          </div>
+        </Modal>
+        <Modal isOpen={showEditProduct}>
+          <ProductForm
+            productId={productName}
+            productName={productName}
+            productPrice={productPrice}
+            edit={true}
+          />
+          <div>
+            <button onClick={() => setShowEditProduct(false)}>Close</button>
+          </div>
+        </Modal>
       </div>
     </div>
   );

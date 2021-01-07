@@ -2,7 +2,7 @@ import { faBrush } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 
-import { getSingleCaterer } from "../../api/caterers/catererMethods";
+import { getCurrentCaterer } from "../../api/caterers/catererMethods";
 import CatererProductList from "../../components/CatererProductList";
 import ProductForm from "../../components/ProductForm/ProductForm";
 
@@ -14,7 +14,7 @@ const Products = () => {
 
   useEffect(() => {
     const getCaterer = async () => {
-      const caterer = await getSingleCaterer();
+      const caterer = await getCurrentCaterer();
       if (caterer) {
         setCatererProducts(caterer.data.products);
         console.log(catererProducts);
@@ -22,18 +22,19 @@ const Products = () => {
     };
 
     getCaterer();
-  }, []);
+  }, [setCatererProducts]);
 
   const onClickHandler = async (event) => {
     event.preventDefault();
     console.log("PRINT");
     setShowAddProduct(true);
   };
+
   return (
     <BaseLayout title="Catalogue">
       <button onClick={onClickHandler}>Add a product to your catalogue</button>
       <Modal isOpen={showAddProduct}>
-        <ProductForm />
+        <ProductForm edit={false} />
         <div>
           <button onClick={() => setShowAddProduct(false)}>Close</button>
         </div>
