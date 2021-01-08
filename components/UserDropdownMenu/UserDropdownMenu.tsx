@@ -35,7 +35,9 @@ const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
             <h3 className="customer-name">{name}</h3>
           </div>
           <p>My orders</p>
-          <p>Edit my details</p>
+          <PageLink to={`/mydetails`}>
+            <button>My details</button>
+          </PageLink>
           <button onClick={() => dispatch(deAuthenticate())}>Log out</button>
         </>
       ) : (
