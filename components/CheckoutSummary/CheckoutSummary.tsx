@@ -15,6 +15,7 @@ const CheckoutSummary = () => {
           <div key={index} className="checkout-cart">
             <span>{item.name}</span>
             <p>{`€${item.price},-`}</p>
+            <p>{`Quantity: ${item.quantity}`}</p>
           </div>
         );
       })}

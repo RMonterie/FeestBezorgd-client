@@ -42,34 +42,46 @@ const CheckoutForm: React.FC = () => {
             <span className="warning">This field is required!</span>
           )}
         </div>
-        <div className="left-input">
-          <label htmlFor="email">Email*</label>
-          <input type="email" name="email" ref={register({ required: true })} />
-          {errors.email && (
-            <span className="warning">This field is required!</span>
-          )}
-        </div>
-        <div className="right-input">
-          <label htmlFor="phoneNr">Phone Number</label>
-          <input type="tel" name="phoneNr" ref={register({ max: 10 })} />
-          {errors.phoneNr && (
-            <span className="warning">Phone number is not valid</span>
-          )}
+        <div className="input-container">
+          <div className="left-input">
+            <label htmlFor="email">Email*</label>
+            <input
+              type="email"
+              name="email"
+              ref={register({ required: true })}
+            />
+            {errors.email && (
+              <span className="warning">This field is required!</span>
+            )}
+          </div>
+          <div className="right-input">
+            <label htmlFor="phoneNr">Phone Number</label>
+            <input type="tel" name="phoneNr" ref={register({ max: 10 })} />
+            {errors.phoneNr && (
+              <span className="warning">Phone number is not valid</span>
+            )}
+          </div>
         </div>
         <h3>Delivery Address</h3>
-        <div className="left-input">
-          <label htmlFor="street">Street*</label>
-          <input type="text" name="street" ref={register({ required: true })} />
-          {errors.street && (
-            <span className="warning">This field is required!</span>
-          )}
-        </div>
-        <div className="right-input">
-          <label htmlFor="city">City*</label>
-          <input type="text" name="city" ref={register({ required: true })} />
-          {errors.city && (
-            <span className="warning">This field is required!</span>
-          )}
+        <div className="input-container">
+          <div className="left-input">
+            <label htmlFor="street">Street*</label>
+            <input
+              type="text"
+              name="street"
+              ref={register({ required: true })}
+            />
+            {errors.street && (
+              <span className="warning">This field is required!</span>
+            )}
+          </div>
+          <div className="right-input">
+            <label htmlFor="city">City*</label>
+            <input type="text" name="city" ref={register({ required: true })} />
+            {errors.city && (
+              <span className="warning">This field is required!</span>
+            )}
+          </div>
         </div>
         <div className="single-input">
           <label htmlFor="zip">Zip Code*</label>

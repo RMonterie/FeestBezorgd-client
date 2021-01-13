@@ -4,9 +4,10 @@ import "./ProductList.scss";
 
 interface ProductListProps {
   products: any;
+  catererName: string;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ products }) => {
+const ProductList: React.FC<ProductListProps> = ({ products, catererName }) => {
   return (
     <div className="list-container">
       {products.map((product, index) => (
@@ -14,6 +15,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
           key={index}
           name={product.name}
           price={product.price}
+          catererName={catererName}
         />
       ))}
     </div>

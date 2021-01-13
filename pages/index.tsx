@@ -3,6 +3,7 @@ import {
   faUtensils,
   faCalendarDay,
   faTruck,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 import BaseLayout from "../layout/BaseLayout";
@@ -29,15 +30,17 @@ export default function Home() {
           <div className="icon-wrapper">
             <IconCard
               icon={<FontAwesomeIcon icon={faUtensils} />}
-              text="Pick a caterer and order"
+              text="1. Pick a caterer and order"
             />
+            <FontAwesomeIcon icon={faChevronRight} />
             <IconCard
               icon={<FontAwesomeIcon icon={faCalendarDay} />}
-              text="Pick the date of your party"
+              text="2. Pick the date of your party"
             />
+            <FontAwesomeIcon icon={faChevronRight} />
             <IconCard
               icon={<FontAwesomeIcon icon={faTruck} />}
-              text="Have your order delivered!"
+              text="3. Have your order delivered!"
             />
           </div>
         </div>

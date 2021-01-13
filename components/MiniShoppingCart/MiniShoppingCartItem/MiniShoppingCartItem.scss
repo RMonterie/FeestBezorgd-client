@@ -15,6 +15,18 @@
     font-weight: bold;
   }
 
+  .quantity-container {
+    display: flex;
+
+    .quantity {
+      margin-right: 4px;
+    }
+
+    .quantity-value {
+      margin: 0px 4px;
+    }
+  }
+
   button {
     max-height: 20px;
   }

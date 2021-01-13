@@ -8,13 +8,25 @@ import Button from "../../Button";
 interface ProductListItemProps {
   name: string;
   price: number;
+  catererName: string;
 }
 
-const ProductListItem: React.FC<ProductListItemProps> = ({ name, price }) => {
+const ProductListItem: React.FC<ProductListItemProps> = ({
+  name,
+  price,
+  catererName,
+}) => {
   const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    dispatch(addProductToCart({ name: name, price: price, quantity: 1 }));
+    dispatch(
+      addProductToCart({
+        name: name,
+        price: price,
+        quantity: 1,
+        caterer: catererName,
+      })
+    );
   };
 
   return (

@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { removeProductFromCart } from "../../../redux/actions/cartActions";
+import {
+  removeProductFromCart,
+  addProductToCart,
+} from "../../../redux/actions/cartActions";
+import Button from "../../Button";
 
 import "./MiniShoppingCartItem.scss";
 
@@ -25,16 +27,31 @@ const MiniShoppingCartItem: React.FC<MiniShoppingCartItemProps> = ({
   index,
 }) => {
   const dispatch = useDispatch();
+
+  const onAddProductHandler = () => {
+    dispatch(addProductToCart({ name: name, price: price, quantity: 1 }));
+  };
+
   return (
     <div className="mini-shoppingcart-item-container">
       <div>
         <p className="product-name">{name}</p>
         <p>{`€${price},-`}</p>
-        <p>{`Quantity: ${quantity}`}</p>
+        <div className="quantity-container">
+          <span className="quantity">Quantity:</span>
+          <Button
+            onClick={() => dispatch(removeProductFromCart(index))}
+            style="btn--primary--solid"
+            text="-"
+          />
+          <span className="quantity-value">{quantity}</span>
+          <Button
+            onClick={onAddProductHandler}
+            style="btn--primary--solid"
+            text="+"
+          />
+        </div>
       </div>
-      <button onClick={() => dispatch(removeProductFromCart(index))}>
-        <FontAwesomeIcon icon={faTrashAlt} />
-      </button>
     </div>
   );
 };

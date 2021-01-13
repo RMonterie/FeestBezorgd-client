@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import { authenticate } from "../../../redux/actions/authActions";
 import { login } from "../../../api/user/authMethods";
 
-import "./LoginForm.scss";
 import Button from "../../Button";
+
+import "./LoginForm.scss";
 
 //TODO Add validation to this form
 /**

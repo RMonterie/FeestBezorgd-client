@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import "./NavDropdownItem.scss";
-
 interface NavDropdownItemProps {
   dropdown: React.ReactNode;
   label?: string;

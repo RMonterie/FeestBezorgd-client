@@ -7,11 +7,12 @@ import NavLinkItem from "../../NavBar/NavLinkItem/NavLinkItem";
 import PageLink from "../PageLink";
 import NavBar from "../../NavBar/NavBar";
 
-import "./PageHeader.scss";
 import NavDropdownItem from "../../NavBar/NavDropdownItem/NavDropdownItem";
 import CartDropdownItem from "../../NavBar/CartDropdownItem/CartDropdownItem";
 import UserDropDownMenu from "../../UserDropdownMenu";
 import MiniShoppingCartDropdownMenu from "../../MiniShoppingCartDropdownMenu";
+
+import "./PageHeader.scss";
 
 /**
  * Page header containing navigation.

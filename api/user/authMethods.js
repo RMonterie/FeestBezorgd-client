@@ -18,7 +18,7 @@ export const login = async (username, password) => {
     });
 
     if (!response.data.jwt || response.status !== 200) {
-      console.log(TEST, "test");
+      return;
     }
 
     const user = JSON.stringify(response.data.userDetailsForm);
