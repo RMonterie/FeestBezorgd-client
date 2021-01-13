@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import Router from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIdeal, faPaypal } from "@fortawesome/free-brands-svg-icons";
@@ -15,11 +16,32 @@ import "./CheckoutForm.scss";
  * @returns {JSX.Element}
  */
 const CheckoutForm: React.FC = () => {
-  const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
+  const { register, handleSubmit, errors, setValue } = useForm({
+    mode: "onBlur",
+  });
+  let user;
+  const products = useSelector((state) => state.cart.products);
+
+  if (localStorage.getItem("user")) {
+    user = JSON.parse(localStorage.getItem("user"));
+  }
+
+  const preFillForm = () => {
+    setValue("name", user.name);
+    setValue("email", user.email);
+    if (user.phoneNumber.trim().length != 0) {
+      setValue("phoneNr", user.phoneNumber);
+    }
+  };
+
+  useEffect(() => {
+    preFillForm();
+  }, []);
 
   const onSubmitHandler = (data) => {
     event.preventDefault();
     console.log(data);
+    console.log(products);
   };
 
   return (
@@ -33,12 +55,8 @@ const CheckoutForm: React.FC = () => {
         <h3>Personal information</h3>
         <div className="single-input">
           <label htmlFor="name">Name*</label>
-          <input
-            type="text"
-            name="firstName"
-            ref={register({ required: true })}
-          />
-          {errors.firstName && (
+          <input type="text" name="name" ref={register({ required: true })} />
+          {errors.name && (
             <span className="warning">This field is required!</span>
           )}
         </div>
@@ -65,7 +83,7 @@ const CheckoutForm: React.FC = () => {
         <h3>Delivery Address</h3>
         <div className="input-container">
           <div className="left-input">
-            <label htmlFor="street">Street*</label>
+            <label htmlFor="street">Street and HouseNr*</label>
             <input
               type="text"
               name="street"

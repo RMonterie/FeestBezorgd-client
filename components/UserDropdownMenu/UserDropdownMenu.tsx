@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 
 import { deAuthenticate } from "../../redux/actions/authActions";
+import { clearCart } from "../../redux/actions/cartActions";
 import LoginForm from "../Forms/LoginForm";
 import PageLink from "../page/PageLink";
 
@@ -36,8 +37,13 @@ const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
           </div>
           <p>My orders</p>
           <p>Edit my details</p>
-          {/* <button onClick={() => dispatch(deAuthenticate())}>Log out</button> */}
-          <p onClick={() => dispatch(deAuthenticate())} className="logout">
+          <p
+            onClick={() => {
+              dispatch(deAuthenticate());
+              dispatch(clearCart());
+            }}
+            className="logout"
+          >
             Log out
           </p>
         </>
