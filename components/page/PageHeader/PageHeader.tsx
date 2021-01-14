@@ -37,6 +37,7 @@ const PageHeader = () => {
       </div>
       <div>
         <NavBar>
+          <NavLinkItem to="/products" label="My Products" />
           <NavLinkItem to="/caterers" label="Caterers" />
           {isAuthenticated ? (
             <NavDropdownItem

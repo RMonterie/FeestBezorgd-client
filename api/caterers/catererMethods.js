@@ -19,3 +19,95 @@ export const getAllCaterers = async () => {
 
   return;
 };
+
+export const getCurrentCaterer = async () => {
+  const token = localStorage.getItem("jwt");
+  let caterer = JSON.parse(localStorage.getItem("user"));
+  let catererUsername = caterer.username;
+
+  if (token !== null) {
+    const response = await axios.get(`${baseUrl}/caterers/${catererUsername}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response !== null) {
+      return response;
+    }
+  }
+
+  return;
+};
+
+export const addProductToCatalogue = async (name, price) => {
+  const token = localStorage.getItem("jwt");
+  let caterer = JSON.parse(localStorage.getItem("user"));
+  let catererUsername = caterer.username;
+
+  if (token !== null) {
+    const response = await axios.post(`${baseUrl}/caterers/products`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      catererUsername: catererUsername,
+      name,
+      price,
+    });
+
+    if (response !== null) {
+      return response;
+    }
+  }
+
+  return;
+};
+
+export const removeProductFromCatalogue = async (name, price) => {
+  const token = localStorage.getItem("jwt");
+  let caterer = JSON.parse(localStorage.getItem("user"));
+  let catererUsername = caterer.username;
+
+  if (token !== null) {
+    const response = await axios.post(`${baseUrl}/caterers/products/delete`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      catererUsername: catererUsername,
+      name,
+      price,
+    });
+
+    if (response !== null) {
+      return response;
+    }
+  }
+
+  return;
+};
+
+export const editProductFromCatalogue = async (productId, name, price) => {
+  const token = localStorage.getItem("jwt");
+  let caterer = JSON.parse(localStorage.getItem("user"));
+  let catererUsername = caterer.username;
+
+  if (token !== null) {
+    const response = await axios.post(
+      `${baseUrl}/caterers/products/edit/${productId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        catererUsername: catererUsername,
+        name,
+        price,
+      }
+    );
+
+    if (response !== null) {
+      return response;
+    }
+  }
+
+  return;
+};
