@@ -38,6 +38,7 @@ const CheckoutForm: React.FC = () => {
     preFillForm();
   }, []);
 
+  //TODO: Use the placeOrder method on submit.
   const onSubmitHandler = (data) => {
     event.preventDefault();
     console.log(data);
