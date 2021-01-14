@@ -1,4 +1,4 @@
-import RegisterForm from "../../components/RegisterForm";
+import RegisterForm from "../../components/Forms/RegisterForm";
 import BaseLayout from "../../layout/BaseLayout";
 
 import "./RegisterPage.scss";

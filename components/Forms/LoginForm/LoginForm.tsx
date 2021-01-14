@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { authenticate } from "../../redux/actions/authActions";
-import { login } from "../../api/user/authMethods";
+import { authenticate } from "../../../redux/actions/authActions";
+import { login } from "../../../api/user/authMethods";
+
+import Button from "../../Button";
 
 import "./LoginForm.scss";
-
-interface LoginFormProps {
-  buttonText: string;
-}
 
 //TODO Add validation to this form
 /**
@@ -17,9 +15,10 @@ interface LoginFormProps {
  *
  * @returns {JSX.Element}
  */
-const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
+const LoginForm: React.FC = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
 
   /**
@@ -32,10 +31,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     const succesfulLogin = await login(username, password);
-    console.log(succesfulLogin);
 
     if (succesfulLogin) {
       dispatch(authenticate());
+    } else {
+      setError(true);
     }
   };
 
@@ -54,7 +54,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ buttonText }) => {
           name="password"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button type="submit">{buttonText}</button>
+        {error && (
+          <p className="login-error">
+            The provided username/password was not correct
+          </p>
+        )}
+        <Button type="submit" style="btn--primary--solid" text="Login" />
       </form>
     </div>
   );

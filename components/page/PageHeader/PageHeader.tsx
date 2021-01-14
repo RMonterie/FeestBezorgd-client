@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -7,10 +7,12 @@ import NavLinkItem from "../../NavBar/NavLinkItem/NavLinkItem";
 import PageLink from "../PageLink";
 import NavBar from "../../NavBar/NavBar";
 
-import "./PageHeader.scss";
 import NavDropdownItem from "../../NavBar/NavDropdownItem/NavDropdownItem";
+import CartDropdownItem from "../../NavBar/CartDropdownItem/CartDropdownItem";
 import UserDropDownMenu from "../../UserDropdownMenu";
-import ShoppingCartDropdownMenu from "../../ShoppingCartDropdownMenu";
+import MiniShoppingCartDropdownMenu from "../../MiniShoppingCartDropdownMenu";
+
+import "./PageHeader.scss";
 
 /**
  * Page header containing navigation.
@@ -18,11 +20,12 @@ import ShoppingCartDropdownMenu from "../../ShoppingCartDropdownMenu";
  * @returns {JSX.Element}
  */
 //TODO Implement the login/register modal to here
-const PageHeader = () => {
+const PageHeader: React.FC = () => {
   const [user, setUser] = useState({ name: "", address: "", email: "" });
   const isAuthenticated = useSelector(
     (state) => state.authentication.isAuthenticated
   );
+  const cartItems = useSelector((state) => state.cart.products?.length);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -59,9 +62,9 @@ const PageHeader = () => {
               dropdown={<UserDropDownMenu authenticated={false} />}
             />
           )}
-          <NavDropdownItem
-            icon={<FontAwesomeIcon icon={faShoppingCart} />}
-            dropdown={<ShoppingCartDropdownMenu />}
+          <CartDropdownItem
+            dropdown={<MiniShoppingCartDropdownMenu />}
+            cartItemLength={cartItems}
           />
         </NavBar>
       </div>

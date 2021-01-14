@@ -16,7 +16,9 @@ const CaterersPage = () => {
   useEffect(() => {
     const getCaterers = async () => {
       const response = await getAllCaterers();
-      setCaterers(response.data);
+      if (response) {
+        setCaterers(response.data);
+      }
     };
 
     getCaterers();
@@ -28,7 +30,7 @@ const CaterersPage = () => {
       {caterers.length > 0 ? (
         <CatererList caterers={caterers} />
       ) : (
-        <h2>There are no caterers to display!</h2>
+        <h2>Something went wrong with fetching the caterers</h2>
       )}
     </BaseLayout>
   );

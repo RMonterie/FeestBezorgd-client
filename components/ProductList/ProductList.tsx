@@ -4,16 +4,18 @@ import "./ProductList.scss";
 
 interface ProductListProps {
   products: any;
+  catererName: string;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ products }) => {
+const ProductList: React.FC<ProductListProps> = ({ products, catererName }) => {
   return (
     <div className="list-container">
-      {products.map((product) => (
+      {products.map((product, index) => (
         <ProductListItem
-          key={product.id}
+          key={index}
           name={product.name}
           price={product.price}
+          catererName={catererName}
         />
       ))}
     </div>

@@ -1,0 +1,33 @@
+.mini-shoppingcart-item-container {
+  width: 240px;
+  background-color: #fbfbfc;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  max-height: 120px;
+  justify-content: space-between;
+  padding: 4px;
+  margin: 4px 0px;
+  border-bottom: 1px solid whitesmoke;
+  align-items: center;
+
+  .product-name {
+    font-weight: bold;
+  }
+
+  .quantity-container {
+    display: flex;
+
+    .quantity {
+      margin-right: 4px;
+    }
+
+    .quantity-value {
+      margin: 0px 4px;
+    }
+  }
+
+  button {
+    max-height: 20px;
+  }
+}

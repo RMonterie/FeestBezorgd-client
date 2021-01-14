@@ -1,6 +1,9 @@
 import CatererListItem from "./CatererListItem/CatererListItem";
 
 //TODO: Type interface
+interface CatererListProps {
+  caterers: any;
+}
 
 /**
  * Component that renders out a list of CatererListItems with given
@@ -8,12 +11,12 @@ import CatererListItem from "./CatererListItem/CatererListItem";
  *
  * @returns {JSX.Element}
  */
-const CatererList = ({ caterers }) => {
+const CatererList: React.FC<CatererListProps> = ({ caterers }) => {
   return (
     <div className="list-container">
       <div>
-        {caterers.map((caterer) => (
-          <CatererListItem key={caterer.id} catererName={caterer.username} />
+        {caterers.map((caterer, index) => (
+          <CatererListItem key={index} catererName={caterer.username} />
         ))}
       </div>
     </div>

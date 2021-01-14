@@ -1,0 +1,54 @@
+.checkout-form {
+  margin: 8px;
+  margin-left: 60px;
+  padding: 12px;
+  width: 40%;
+  border-bottom: 1px solid black;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  .back-button {
+    color: #006da3;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .input-container {
+    display: flex;
+  }
+
+  .left-input {
+    margin-right: 20px;
+    margin-bottom: 16px;
+    label,
+    input {
+      display: block;
+    }
+  }
+
+  .right-input {
+    margin-bottom: 16px;
+    label,
+    input {
+      display: block;
+    }
+  }
+
+  .single-input {
+    margin-bottom: 16px;
+    label,
+    input {
+      display: block;
+    }
+  }
+
+  button {
+    margin: 8px 4px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 60px;
+    height: 40px;
+  }
+}

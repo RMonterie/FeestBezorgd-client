@@ -1,0 +1,73 @@
+@import "../../theme/config.scss/";
+
+.btn {
+  &--primary {
+    &--solid {
+      background: $FEESTBEZORGD_DARK_BLUE;
+      border-radius: 3px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+    }
+  }
+  &--secondary {
+    &--solid {
+      background: $FEESTBEZORGD_ORANGE;
+      color: white;
+      border-radius: 3px;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+    }
+  }
+  &--success {
+    &--solid {
+      background: $FEESTBEZORGD_GREEN;
+      color: white;
+      border-radius: 3px;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+    }
+  }
+  &--danger {
+    &--solid {
+      background: red;
+      border-radius: 3px;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+    }
+  }
+  &--add {
+    &--solid {
+      background: $FEESTBEZORGD_BLUE;
+      border-radius: 3px;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+      &:hover {
+        filter: brightness(95%);
+      }
+    }
+  }
+}

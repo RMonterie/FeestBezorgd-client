@@ -32,7 +32,7 @@ const CatererPage = () => {
       <div className="caterer-page-container">
         <h2 className="page-title">Products of caterer {catererName}</h2>
         {products?.length ? (
-          <ProductList products={products} />
+          <ProductList products={products} catererName={catererName} />
         ) : (
           <h2>Loading...</h2>
         )}

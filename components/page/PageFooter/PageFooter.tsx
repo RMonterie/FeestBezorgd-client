@@ -7,7 +7,7 @@ import "./PageFooter.scss";
  * @returns {JSX.Element}
  */
 
-const PageFooter = () => {
+const PageFooter: React.FC = () => {
   return (
     <footer id="page-footer">
       <div className="pageFooter--container">
