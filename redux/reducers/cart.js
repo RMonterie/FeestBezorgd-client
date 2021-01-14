@@ -44,6 +44,7 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         products: [],
+        total: 0,
       };
     default:
       return state;
