@@ -8,6 +8,7 @@ const DetailsForm = ({ caterer }) => {
   const [address, setAddress] = useState(caterer.address);
   const [phoneNumber, setPhoneNumber] = useState(caterer.phoneNumber);
   const onSubmitHandler = () => {
+    event.preventDefault();
     editCatererDetails(name, email, address, phoneNumber);
   };
 

@@ -17,7 +17,6 @@ const CatererProductList = ({ catererProducts }) => {
   };
 
   const onClickDeleteHandler = async (name, price) => {
-    event.preventDefault();
     removeProductFromCatalogue(name, price);
     setShowDeleteProduct(false);
   };

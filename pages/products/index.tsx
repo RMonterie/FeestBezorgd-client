@@ -23,7 +23,6 @@ const Products = () => {
   }, [setCatererProducts]);
 
   const onClickHandler = async (event) => {
-    event.preventDefault();
     setShowAddProduct(true);
   };
 
