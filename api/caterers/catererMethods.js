@@ -4,20 +4,10 @@ import { baseUrl } from "../../constants";
 
 export const getAllCaterers = async () => {
   try {
-    const token = localStorage.getItem("jwt");
-
-    if (token !== null) {
-      const response = await axios.get(`${baseUrl}/caterers`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response !== null) {
-        return response;
-      }
+    const response = await axios.get(`${baseUrl}/caterers/list`);
+    if (response !== null) {
+      return response;
     }
-
     return;
   } catch (error) {
     return;

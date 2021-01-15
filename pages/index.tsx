@@ -1,3 +1,4 @@
+import Router from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUtensils,
@@ -24,6 +25,11 @@ export default function Home() {
         <div className="hero-image">
           <h1>Feestbezorgd</h1>
           <h3>Food for your party, delivered when you need it.</h3>
+          <Button
+            style="btn--primary--pill"
+            text="Get started"
+            onClick={() => Router.push("/register")}
+          />
         </div>
         <div className="instruction-icons">
           <h1>Easily order food for your party</h1>
@@ -45,7 +51,11 @@ export default function Home() {
           </div>
         </div>
         <div className="third-section">
-          <h1>Some more stuff</h1>
+          <h1>For caterers</h1>
+          <p>
+            If you want to partner up with feestbezorgd click the button below
+            to register for a caterer account.
+          </p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -55,7 +65,13 @@ export default function Home() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <Button style="btn--primary--solid" text="Click me" />
+          <div className="button-wrapper">
+            <Button
+              style="btn--primary--solid"
+              text="Register as a caterer"
+              onClick={() => Router.push("/catererRegister")}
+            />
+          </div>
         </div>
       </div>
     </BaseLayout>

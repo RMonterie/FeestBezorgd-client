@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import NavLinkItem from "../../NavBar/NavLinkItem/NavLinkItem";
 import PageLink from "../PageLink";
@@ -21,7 +21,13 @@ import "./PageHeader.scss";
  */
 //TODO Implement the login/register modal to here
 const PageHeader: React.FC = () => {
-  const [user, setUser] = useState({ name: "", address: "", email: "" });
+  const [user, setUser] = useState({
+    name: "",
+    address: "",
+    username: "",
+    email: "",
+    role: "",
+  });
   const isAuthenticated = useSelector(
     (state) => state.authentication.isAuthenticated
   );
@@ -40,18 +46,21 @@ const PageHeader: React.FC = () => {
       </div>
       <div>
         <NavBar>
-          <NavLinkItem to="/products" label="My Products" />
-          <NavLinkItem to="/caterers" label="Caterers" />
+          {user.role.toLowerCase() == "caterer" && (
+            <NavLinkItem to="/products" label="My Products" />
+          )}
+          {(user.role.toLowerCase() != "caterer" || !user.role) && (
+            <NavLinkItem to="/caterers" label="Caterers" />
+          )}
           {isAuthenticated ? (
             <NavDropdownItem
-              label={`${user.name}`}
+              label={`${user.name || user.username}`}
               icon={<FontAwesomeIcon icon={faUser} />}
               dropdown={
                 <UserDropDownMenu
                   authenticated={true}
                   name={user.name}
-                  address={user.address}
-                  email={user.email}
+                  username={user.username}
                 />
               }
             />
@@ -62,10 +71,12 @@ const PageHeader: React.FC = () => {
               dropdown={<UserDropDownMenu authenticated={false} />}
             />
           )}
-          <CartDropdownItem
-            dropdown={<MiniShoppingCartDropdownMenu />}
-            cartItemLength={cartItems}
-          />
+          {(user.role.toLowerCase() != "caterer" || !user.role) && (
+            <CartDropdownItem
+              dropdown={<MiniShoppingCartDropdownMenu />}
+              cartItemLength={cartItems}
+            />
+          )}
         </NavBar>
       </div>
     </header>

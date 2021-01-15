@@ -36,7 +36,7 @@ const ProductListItem: React.FC<ProductListItemProps> = ({
         <div className="price">{`€${price},-`}</div>
         <Button
           style="btn--add--solid"
-          icon={<FontAwesomeIcon icon={faPlus} />}
+          icon={faPlus}
           onClick={onClickHandler}
         />
       </div>

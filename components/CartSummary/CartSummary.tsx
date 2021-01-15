@@ -24,7 +24,7 @@ export const CartSummary: React.FC = () => {
         <PageLink to="/checkout">
           <Button
             style="btn--success--solid"
-            icon={<FontAwesomeIcon icon={faShoppingCart} />}
+            icon={faShoppingCart}
             text="Check out"
           />
         </PageLink>

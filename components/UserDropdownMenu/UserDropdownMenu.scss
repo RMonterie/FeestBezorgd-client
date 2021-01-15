@@ -10,6 +10,14 @@
   color: black;
   z-index: 80;
 
+  .caterer-login-link {
+    border-top: 1px solid black;
+    padding-top: 8px;
+    cursor: pointer;
+    color: #006da3;
+    text-align: center;
+  }
+
   .customer-name {
     color: #006da3;
     border-bottom: 1px solid black;

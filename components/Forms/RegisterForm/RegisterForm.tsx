@@ -6,14 +6,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 import { authenticate } from "../../../redux/actions/authActions";
-import { registerCustomer } from "../../../api/user/authMethods";
+import {
+  registerCaterer,
+  registerCustomer,
+} from "../../../api/user/authMethods";
 
 import "./RegisterForm.scss";
 import Button from "../../Button";
 
+interface RegisterFormProps {
+  role: string;
+}
+
 //TODO Add validation to form
-//TODO Move this form to the header
-const RegisterForm: React.FC = () => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ role }) => {
   const [submitError, setSubmitError] = useState(false);
   const dispatch = useDispatch();
   const { register, errors, handleSubmit } = useForm({ mode: "onBlur" });
@@ -28,17 +34,24 @@ const RegisterForm: React.FC = () => {
    */
   const onSubmitHandler = async (data) => {
     event.preventDefault();
-    const successfulRegister = await registerCustomer(
-      data.username,
-      data.password
-    );
-
-    if (successfulRegister) {
-      dispatch(authenticate());
-      Router.push("/");
+    if (role.toLowerCase() == "customer") {
+      const successfulRegister = await registerCustomer(data);
+      if (successfulRegister) {
+        dispatch(authenticate());
+        Router.push("/caterers");
+      } else {
+        setSubmitError(true);
+      }
     } else {
-      setSubmitError(true);
+      const successfulRegister = await registerCaterer(data);
+      if (successfulRegister) {
+        dispatch(authenticate());
+        Router.push("/products");
+      } else {
+        setSubmitError(true);
+      }
     }
+    console.log(data);
   };
 
   return (
@@ -85,7 +98,7 @@ const RegisterForm: React.FC = () => {
         <label htmlFor="email">Email*</label>
         <input
           type="email"
-          name="address"
+          name="email"
           ref={register({
             required: "Email is required",
             pattern: {
@@ -95,17 +108,15 @@ const RegisterForm: React.FC = () => {
           })}
         />
         {errors.email && <span>bruh</span>}
-        <label htmlFor="address">Address</label>
+        <label htmlFor="name">Name*</label>
+        <input type="text" name="name" ref={register} />
+        <label htmlFor="address">Address*</label>
         <input type="text" name="address" ref={register} />
-        <label htmlFor="firstName">First Name</label>
-        <input type="text" name="firstName" ref={register} />
-        <label htmlFor="lastName">Last Name</label>
-        <input type="text" name="emlastNameail" ref={register} />
-        <label htmlFor="phoneNumber">Phone Number</label>
+        <label htmlFor="phoneNumber">Phone Number*</label>
         <input
           type="tel"
           name="phoneNumber"
-          ref={register({ maxLength: 11, minLength: 8 })}
+          ref={register({ required: true, maxLength: 11, minLength: 8 })}
         />
         {errors.phoneNumber && <span>This is not a valid phone number</span>}
         <Button style="btn--primary--solid" type="submit" text="Register" />

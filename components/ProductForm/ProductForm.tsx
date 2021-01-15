@@ -1,57 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 import {
   addProductToCatalogue,
   editProductFromCatalogue,
 } from "../../api/caterers/catererMethods";
 
-const ProductForm = ({ productId, productName, productPrice, edit }) => {
+import Button from "../Button";
+
+const ProductForm = ({
+  productId,
+  productName,
+  productPrice,
+  edit,
+  className,
+}) => {
   const [name, setName] = useState(productName);
   const [price, setPrice] = useState(productPrice);
+  const { register, handleSubmit, errors, setValue } = useForm({
+    mode: "onBlur",
+  });
 
-  const onSubmitHandler = async (event) => {
-    event.preventDefault();
-    if (edit) {
-      editProductFromCatalogue(productId, name, price);
-    } else {
-      addProductToCatalogue(name, price);
-    }
+  const preFillForm = () => {
+    setValue("productName", productName);
+    setValue("productPrice", productPrice);
   };
 
-  const ButtonReturn = () => {
+  useEffect(() => {
+    preFillForm();
+  }, []);
+
+  const onSubmitHandler = async (data) => {
+    event.preventDefault();
     if (edit) {
-      return <button type="submit">Edit product</button>;
+      editProductFromCatalogue(productId, data.productName, data.productPrice);
     } else {
-      return <button type="submit">Add product</button>;
+      addProductToCatalogue(data.productName, data.productPrice);
     }
+    // console.log(data);
   };
 
   return (
-    <div>
-      <form onSubmit={onSubmitHandler}>
+    <form onSubmit={handleSubmit(onSubmitHandler)} className={className}>
+      <div>
         <label htmlFor="productName">Product Name</label>
         <input
           type="text"
           name="productName"
-          value={name}
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
+          ref={register({ required: true })}
         />
-
+        {errors.productName && (
+          <p className="warning">This field is required!</p>
+        )}
+      </div>
+      <div>
         <label htmlFor="productPrice">Product Price</label>
         <input
-          type="integer"
+          type="number"
           name="productPrice"
-          value={price}
-          onChange={(event) => {
-            setPrice(event.target.value);
-          }}
+          ref={register({ required: true })}
         />
-
-        <ButtonReturn />
-      </form>
-    </div>
+      </div>
+      {edit ? (
+        <Button type="submit" text="Edit product" style="btn--success--solid" />
+      ) : (
+        <Button type="submit" text="Add product" style="btn--success--solid" />
+      )}
+    </form>
   );
 };
 

@@ -11,7 +11,22 @@
       padding: 4px 8px;
 
       &:hover {
-        filter: brightness(1.2);
+        filter: brightness(120%);
+      }
+    }
+
+    &--pill {
+      background: $FEESTBEZORGD_DARK_BLUE;
+      border-radius: 20px;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+
+      &:hover {
+        background: white;
+        color: $FEESTBEZORGD_BLUE;
+        border: 1px solid $FEESTBEZORGD_BLUE;
       }
     }
   }
@@ -25,7 +40,7 @@
       cursor: pointer;
 
       &:hover {
-        filter: brightness(1.2);
+        filter: brightness(120%);
       }
     }
   }
@@ -39,7 +54,7 @@
       cursor: pointer;
 
       &:hover {
-        filter: brightness(1.2);
+        filter: brightness(120%);
       }
     }
   }
@@ -53,7 +68,7 @@
       cursor: pointer;
 
       &:hover {
-        filter: brightness(1.2);
+        filter: brightness(95%);
       }
     }
   }

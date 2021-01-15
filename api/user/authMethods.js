@@ -12,6 +12,8 @@ import { baseUrl } from "../../constants";
  */
 export const login = async (username, password) => {
   try {
+    const requestUserName = username.toLowerCase();
+    console.log(requestUserName);
     const response = await axios.post(`${baseUrl}/authenticate`, {
       username,
       password,
@@ -42,11 +44,22 @@ export const login = async (username, password) => {
  *
  * @returns {boolean}
  */
-export const registerCustomer = async (username, password) => {
+export const registerCustomer = async ({
+  username,
+  password,
+  email,
+  name,
+  address,
+  phoneNumber,
+}) => {
   try {
-    const response = await axios.post(`${baseUrl}/registerCustomer`, {
+    const response = await axios.post(`${baseUrl}/customers/signing`, {
       username,
       password,
+      email,
+      name,
+      address,
+      phoneNumber,
     });
 
     if (response.status !== 200) {
@@ -60,6 +73,38 @@ export const registerCustomer = async (username, password) => {
     }
 
     return;
+  } catch (error) {
+    return;
+  }
+};
+
+export const registerCaterer = async ({
+  username,
+  password,
+  email,
+  name,
+  address,
+  phoneNumber,
+}) => {
+  try {
+    const response = await axios.post(`${baseUrl}/caterers/signing`, {
+      username,
+      password,
+      email,
+      name,
+      address,
+      phoneNumber,
+    });
+
+    if (response.status !== 200) {
+      return;
+    }
+
+    const successfulLogin = await login(username, password);
+
+    if (successfulLogin) {
+      return true;
+    }
   } catch (error) {
     return;
   }

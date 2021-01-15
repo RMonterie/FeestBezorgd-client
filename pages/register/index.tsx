@@ -13,7 +13,7 @@ const RegisterPage = () => {
     <BaseLayout title="Register">
       <div className="register-content-container">
         <h2>Register as a new user</h2>
-        <RegisterForm />
+        <RegisterForm role="customer" />
       </div>
     </BaseLayout>
   );

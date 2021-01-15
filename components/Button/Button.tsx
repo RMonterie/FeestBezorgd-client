@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./Button.scss";
 
@@ -9,6 +10,7 @@ const STYLES = [
   "btn--success--solid",
   "btn--danger--solid",
   "btn--add--solid",
+  "btn--primary--pill",
 ];
 
 //TODO: Find out the correct types for these props
@@ -34,9 +36,17 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const checkButtonStyle = STYLES.includes(style) ? style : STYLES[0];
 
+  if (icon) {
+    return (
+      <button onClick={onClick} className={checkButtonStyle} type={type}>
+        <FontAwesomeIcon icon={icon} />
+        {text}
+      </button>
+    );
+  }
+
   return (
     <button onClick={onClick} className={checkButtonStyle} type={type}>
-      {icon}
       {text}
     </button>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import Router from "next/router";
 
 import { authenticate } from "../../../redux/actions/authActions";
 import { login } from "../../../api/user/authMethods";
@@ -8,6 +9,10 @@ import Button from "../../Button";
 
 import "./LoginForm.scss";
 
+interface LoginFormProps {
+  role: string;
+}
+
 //TODO Add validation to this form
 /**
  * Component that renders a form and calls the login function
@@ -15,7 +20,7 @@ import "./LoginForm.scss";
  *
  * @returns {JSX.Element}
  */
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC<LoginFormProps> = ({ role }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -34,6 +39,11 @@ const LoginForm: React.FC = () => {
 
     if (succesfulLogin) {
       dispatch(authenticate());
+      if (role.toLowerCase() == "customer") {
+        Router.push("/caterers");
+      } else {
+        Router.push("/products");
+      }
     } else {
       setError(true);
     }

@@ -29,7 +29,7 @@ const CheckoutForm: React.FC = () => {
   const preFillForm = () => {
     setValue("name", user.name);
     setValue("email", user.email);
-    if (user.phoneNumber.trim().length != 0) {
+    if (user.phoneNumber?.trim().length != 0) {
       setValue("phoneNr", user.phoneNumber);
     }
   };
@@ -84,7 +84,7 @@ const CheckoutForm: React.FC = () => {
         <h3>Delivery Address</h3>
         <div className="input-container">
           <div className="left-input">
-            <label htmlFor="street">Street and HouseNr*</label>
+            <label htmlFor="street">Street Address*</label>
             <input
               type="text"
               name="street"
@@ -126,15 +126,11 @@ const CheckoutForm: React.FC = () => {
         </div>
         <h3>Select your payment method</h3>
         <Button
-          icon={<FontAwesomeIcon icon={faIdeal} />}
+          icon={faIdeal}
           style="btn--primary--solid"
           onClick={() => Router.push("/checkoutSuccess")}
         />
-        <Button
-          icon={<FontAwesomeIcon icon={faPaypal} />}
-          style="btn--primary--solid"
-          type="submit"
-        />
+        <Button icon={faPaypal} style="btn--primary--solid" type="submit" />
       </form>
     </div>
   );
