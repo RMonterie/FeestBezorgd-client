@@ -19,8 +19,8 @@ const CheckoutForm: React.FC = () => {
   const { register, handleSubmit, errors, setValue } = useForm({
     mode: "onBlur",
   });
-  let user;
   const products = useSelector((state) => state.cart.products);
+  let user;
 
   if (localStorage.getItem("user")) {
     user = JSON.parse(localStorage.getItem("user"));
@@ -35,7 +35,9 @@ const CheckoutForm: React.FC = () => {
   };
 
   useEffect(() => {
-    preFillForm();
+    if (user) {
+      preFillForm();
+    }
   }, []);
 
   //TODO: Use the placeOrder method on submit.

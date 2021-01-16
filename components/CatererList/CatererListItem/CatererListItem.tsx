@@ -14,8 +14,14 @@ interface CatererListItemProps {
 const CatererListItem: React.FC<CatererListItemProps> = ({ catererName }) => {
   return (
     <PageLink to={`/caterers/caterer?caterer=${catererName}`}>
-      <div className="card">
-        <h4>{catererName}</h4>
+      <div className="caterer-card">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/08/25/07/30/red-1618916_1280.png"
+          alt="caterer logo"
+          height={80}
+          width={80}
+        />
+        <h4 className="caterer-name">{catererName}</h4>
       </div>
     </PageLink>
   );

@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { faPen, faTrashAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { removeProductFromCatalogue } from "../../api/caterers/catererMethods";
-import ProductForm from "../ProductForm";
+import ProductForm from "../Forms/ProductForm";
 import Button from "../Button";
 
 import "./CatererProductList.scss";
@@ -76,7 +76,10 @@ const CatererProductList = ({ catererProducts }) => {
             <Button
               style="btn--success--solid"
               text="Yes"
-              onClick={() => onClickDeleteHandler(productName, productPrice)}
+              onClick={() => {
+                onClickDeleteHandler(productName, productPrice);
+                setShowDeleteProduct(false);
+              }}
             />
             <Button
               style="btn--danger--solid"

@@ -4,7 +4,7 @@ import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { getCurrentCaterer } from "../../api/caterers/catererMethods";
 import CatererProductList from "../../components/CatererProductList";
-import ProductForm from "../../components/ProductForm/ProductForm";
+import ProductForm from "../../components/Forms/ProductForm";
 import Button from "../../components/Button";
 
 import BaseLayout from "../../layout/BaseLayout";

@@ -5,6 +5,8 @@ import { getAllCaterers } from "../../api/caterers/catererMethods";
 
 import BaseLayout from "../../layout/BaseLayout";
 
+import "./CaterersPage.scss";
+
 /**
  * Page that displays all the caterers.
  *
@@ -26,12 +28,14 @@ const CaterersPage = () => {
 
   return (
     <BaseLayout title="Find a caterer">
-      <h2 className="page-title">Caterers</h2>
-      {caterers.length > 0 ? (
-        <CatererList caterers={caterers} />
-      ) : (
-        <h2>Something went wrong with fetching the caterers</h2>
-      )}
+      <div className="caterers-page-container">
+        <h2 className="caterers-page-title">Caterers</h2>
+        {caterers.length > 0 ? (
+          <CatererList caterers={caterers} />
+        ) : (
+          <h2>Something went wrong with fetching the caterers</h2>
+        )}
+      </div>
     </BaseLayout>
   );
 };
