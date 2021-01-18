@@ -1,14 +1,26 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
 import {
   addProductToCatalogue,
   editProductFromCatalogue,
 } from "../../../api/caterers/catererMethods";
+import { closeModal } from "../../../redux/actions/modalActions";
 
 import Button from "../../Button";
 
-const ProductForm = ({
+import "./ProductForm.scss";
+
+interface ProductFormProps {
+  productId?: number;
+  productName?: string;
+  productPrice?: number;
+  edit?: boolean;
+  className?: string;
+}
+
+const ProductForm: React.FC<ProductFormProps> = ({
   productId,
   productName,
   productPrice,
@@ -18,6 +30,7 @@ const ProductForm = ({
   const { register, handleSubmit, errors, setValue } = useForm({
     mode: "onBlur",
   });
+  const dispatch = useDispatch();
 
   const preFillForm = () => {
     setValue("productName", productName);
@@ -32,9 +45,12 @@ const ProductForm = ({
     event.preventDefault();
     if (edit) {
       editProductFromCatalogue(productId, data.productName, data.productPrice);
+      dispatch(closeModal());
     } else {
       addProductToCatalogue(data.productName, data.productPrice);
+      dispatch(closeModal());
     }
+    dispatch(closeModal());
   };
 
   return (
@@ -47,7 +63,7 @@ const ProductForm = ({
           ref={register({ required: true })}
         />
         {errors.productName && (
-          <p className="warning">This field is required!</p>
+          <p className="product-form-warning">This field is required!</p>
         )}
       </div>
       <div>
@@ -57,6 +73,9 @@ const ProductForm = ({
           name="productPrice"
           ref={register({ required: true })}
         />
+        {errors.productPrice && (
+          <p className="product-form-warning">This field is required!</p>
+        )}
       </div>
       {edit ? (
         <Button type="submit" text="Edit product" style="btn--success--solid" />

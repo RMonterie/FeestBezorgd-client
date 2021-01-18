@@ -7,3 +7,7 @@ export const CLEAR_CART = "CLEAR_CART";
 export const AUTHENTICATE = "AUTHENTICATE";
 
 export const DEAUTHENTICATE = "DEAUTHENTICATE";
+
+export const OPEN_MODAL = "OPEN_MODAL";
+
+export const CLOSE_MODAL = "CLOSE_MODAL";

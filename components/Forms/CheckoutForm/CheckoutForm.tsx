@@ -77,10 +77,7 @@ const CheckoutForm: React.FC = () => {
           </div>
           <div className="right-input">
             <label htmlFor="phoneNr">Phone Number</label>
-            <input type="tel" name="phoneNr" ref={register({ max: 10 })} />
-            {errors.phoneNr && (
-              <span className="warning">Phone number is not valid</span>
-            )}
+            <input type="tel" name="phoneNr" ref={register()} />
           </div>
         </div>
         <h3>Delivery Address</h3>
