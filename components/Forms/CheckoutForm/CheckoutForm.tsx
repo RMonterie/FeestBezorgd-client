@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Router from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIdeal, faPaypal } from "@fortawesome/free-brands-svg-icons";
@@ -10,6 +10,7 @@ import Button from "../../Button";
 import { createPayment, placeOrder } from "../../../api/user/orderMethods.js";
 
 import "./CheckoutForm.scss";
+import { clearCart } from "../../../redux/actions/cartActions";
 
 /**
  * Checkout form for use in the checkout page
@@ -21,6 +22,7 @@ const CheckoutForm: React.FC = () => {
     mode: "onBlur",
   });
   const products = useSelector((state) => state.cart.products);
+  const dispatch = useDispatch();
   let user;
 
   if (localStorage.getItem("user")) {
@@ -62,6 +64,7 @@ const CheckoutForm: React.FC = () => {
     );
 
     Router.push(href);
+    dispatch(clearCart());
   };
 
   // const onClickHandler = () => {};

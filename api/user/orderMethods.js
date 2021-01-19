@@ -14,10 +14,10 @@ export const createPayment = async () => {
     });
 
     if (response.status !== 200) {
-      return response;
+      return;
     }
 
-    return true;
+    return response;
   } catch (error) {
     return;
   }
@@ -58,7 +58,7 @@ export const placeOrder = async (
       return;
     }
 
-    return true;
+    return response;
   } catch (error) {
     return;
   }
@@ -71,7 +71,7 @@ export const getAllOrders = async () => {
     let customerUsername = customer.username;
 
     const response = await axios.get(
-      `${baseUrl}/orders?username=` + customerUsername,
+      `${baseUrl}/orders/` + customerUsername + "/all",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -80,10 +80,10 @@ export const getAllOrders = async () => {
     );
 
     if (response.status !== 200) {
-      return response;
+      return;
     }
 
-    return true;
+    return response;
   } catch (error) {
     return;
   }
