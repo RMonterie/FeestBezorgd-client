@@ -30,7 +30,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ role }) => {
    * to the landing page on successful register due to the register function
    * also calling the login function.
    *
-   * @param {event} event
+   * @param {obj} data
    */
   const onSubmitHandler = async (data) => {
     event.preventDefault();
@@ -51,7 +51,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ role }) => {
         setSubmitError(true);
       }
     }
-    console.log(data);
   };
 
   return (

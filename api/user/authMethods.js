@@ -12,8 +12,6 @@ import { baseUrl } from "../../constants";
  */
 export const login = async (username, password) => {
   try {
-    const requestUserName = username.toLowerCase();
-    console.log(requestUserName);
     const response = await axios.post(`${baseUrl}/authenticate`, {
       username,
       password,

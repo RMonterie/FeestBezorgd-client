@@ -38,15 +38,11 @@ const CheckoutForm: React.FC = () => {
     }
   }, []);
 
-  //TODO: Use the placeOrder method on submit.
   const onSubmitHandler = async (data) => {
     event.preventDefault();
-    console.log(data);
-    console.log(products);
     const payment = await createPayment();
     let href = payment.data._links.checkout.href;
     let paymentId = payment.data.id;
-    console.log(paymentId);
     placeOrder(
       products,
       products[0].caterer,

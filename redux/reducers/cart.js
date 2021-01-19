@@ -12,11 +12,9 @@ const cart = (state = initialState, action) => {
       const productFound = state.products.findIndex(
         (product) => product.name == action.payload.name
       );
-      console.log(action.payload);
       if (productFound !== -1) {
         const newProducts = [...state.products];
         newProducts[productFound].quantity += 1;
-        console.log(newProducts);
         return {
           ...state,
           products: [...newProducts],

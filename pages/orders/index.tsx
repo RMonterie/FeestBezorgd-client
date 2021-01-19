@@ -10,13 +10,9 @@ const orderPage = () => {
   useEffect(() => {
     const getOrders = async () => {
       const response = await getAllOrders();
-      console.log(response);
-
       if (response) {
         setOrders(response.data);
       }
-
-      console.log(response?.data);
     };
 
     getOrders();
