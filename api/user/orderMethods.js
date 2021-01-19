@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Router } from "next/router";
 
 import { baseUrl } from "../../constants";
 
@@ -13,7 +12,7 @@ export const createPayment = async () => {
       },
     });
 
-    if (response.status !== 200) {
+    if (response.status !== 201) {
       return;
     }
 

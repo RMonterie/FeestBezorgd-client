@@ -45,7 +45,7 @@ const CheckoutForm: React.FC = () => {
 
   //TODO: Use the placeOrder method on submit.
   const onSubmitHandler = async (data) => {
-    // event.preventDefault();
+    event.preventDefault();
     console.log(data);
     console.log(products);
     const payment = await createPayment();
@@ -66,8 +66,6 @@ const CheckoutForm: React.FC = () => {
     Router.push(href);
     dispatch(clearCart());
   };
-
-  // const onClickHandler = () => {};
 
   return (
     <div className="checkout-form">
