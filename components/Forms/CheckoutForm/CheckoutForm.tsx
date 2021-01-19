@@ -8,23 +8,21 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../../Button";
 import { createPayment, placeOrder } from "../../../api/user/orderMethods.js";
-
-import "./CheckoutForm.scss";
 import { clearCart } from "../../../redux/actions/cartActions";
 import { preFillForm } from "./utils";
+
+import "./CheckoutForm.scss";
 
 /**
  * Checkout form for use in the checkout page
  */
 const CheckoutForm: React.FC = () => {
   const [userData, setUserData] = React.useState(null);
-
   const { register, handleSubmit, errors, setValue } = useForm({
     mode: "onBlur",
   });
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
-  let user;
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
