@@ -19,14 +19,17 @@ import "./ProductsPage.scss";
  *
  * @returns {JSX.Element}
  */
-const ProductsPage = () => {
+const ProductsPage: React.FC = () => {
   const [catererProducts, setCatererProducts] = useState([]);
   const isModalOpen = useSelector((state) => state.modal.isOpen);
   const modalType = useSelector((state) => state.modal.type);
   const dispatch = useDispatch();
 
-  //Call api and set catererProdcucts on first load.
+  //Call api, set products on first render and call api and setProducts when modal state changes.
   useEffect(() => {
+    if (isModalOpen) {
+      return;
+    }
     const getCaterer = async () => {
       const caterer = await getCurrentCaterer();
       if (caterer) {
@@ -35,19 +38,7 @@ const ProductsPage = () => {
     };
 
     getCaterer();
-  }, [setCatererProducts]);
-
-  //Call api and set catererrProducts whenever a modal opens or closes.
-  useEffect(() => {
-    const getCaterer = async () => {
-      const caterer = await getCurrentCaterer();
-      if (caterer) {
-        setCatererProducts(caterer.data.products);
-      }
-    };
-
-    getCaterer();
-  }, [isModalOpen]);
+  }, [setCatererProducts, isModalOpen]);
 
   return (
     <BaseLayout title="My products">
@@ -79,6 +70,8 @@ const ProductsPage = () => {
                 overflow: "hidden",
               },
             }}
+            onRequestClose={() => dispatch(closeModal())}
+            shouldCloseOnOverlayClick={true}
           >
             <div className="modal-title">
               <h2>Add a product</h2>

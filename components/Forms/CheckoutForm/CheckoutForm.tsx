@@ -9,34 +9,28 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../Button";
 
 import "./CheckoutForm.scss";
+import { preFillForm } from "./utils";
 
 /**
  * Checkout form for use in the checkout page
- *
- * @returns {JSX.Element}
  */
 const CheckoutForm: React.FC = () => {
+  const [userData, setUserData] = React.useState(null);
+
   const { register, handleSubmit, errors, setValue } = useForm({
     mode: "onBlur",
   });
   const products = useSelector((state) => state.cart.products);
-  let user;
-
-  if (localStorage.getItem("user")) {
-    user = JSON.parse(localStorage.getItem("user"));
-  }
-
-  const preFillForm = () => {
-    setValue("name", user.name);
-    setValue("email", user.email);
-    if (user.phoneNumber?.trim().length != 0) {
-      setValue("phoneNr", user.phoneNumber);
-    }
-  };
 
   useEffect(() => {
-    if (user) {
-      preFillForm();
+    if (localStorage.getItem("user")) {
+      setUserData(JSON.parse(localStorage.getItem("user")));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (userData) {
+      preFillForm(userData, setValue);
     }
   }, []);
 

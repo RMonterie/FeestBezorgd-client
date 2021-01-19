@@ -8,7 +8,6 @@ export const getAllCaterers = async () => {
     if (response !== null) {
       return response;
     }
-    return;
   } catch (error) {
     return;
   }
@@ -17,7 +16,7 @@ export const getAllCaterers = async () => {
 export const getCurrentCaterer = async () => {
   const token = localStorage.getItem("jwt");
   let caterer = JSON.parse(localStorage.getItem("user"));
-  let catererUsername = caterer.username;
+  let catererUsername = caterer?.username;
 
   if (token !== null) {
     const response = await axios.get(`${baseUrl}/caterers/${catererUsername}`, {

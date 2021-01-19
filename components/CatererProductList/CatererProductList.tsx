@@ -69,6 +69,8 @@ const CatererProductList = ({ catererProducts }) => {
                 left: "40%",
               },
             }}
+            onRequestClose={() => dispatch(closeModal())}
+            shouldCloseOnOverlayClick={true}
           >
             <h2>Are you sure you want to delete this product ?</h2>
             <div className="delete-product-group">
@@ -102,6 +104,8 @@ const CatererProductList = ({ catererProducts }) => {
                 left: "40%",
               },
             }}
+            onRequestClose={() => dispatch(closeModal())}
+            shouldCloseOnOverlayClick={true}
           >
             <div className="modal-header">
               <h2>{`Edit Product ${productName}`}</h2>

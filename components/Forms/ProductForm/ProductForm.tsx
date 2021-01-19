@@ -77,11 +77,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
           <p className="product-form-warning">This field is required!</p>
         )}
       </div>
-      {edit ? (
-        <Button type="submit" text="Edit product" style="btn--success--solid" />
-      ) : (
-        <Button type="submit" text="Add product" style="btn--success--solid" />
-      )}
+      <Button
+        type="submit"
+        text={edit ? "Edit" : "Add"}
+        style="btn--success--solid"
+      />
     </form>
   );
 };

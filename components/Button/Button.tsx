@@ -24,8 +24,6 @@ interface ButtonProps {
 
 /**
  * Generic button component. Can be customized by specifying props.
- *
- * @returns {JSX.Element}
  */
 const Button: React.FC<ButtonProps> = ({
   icon,
@@ -36,17 +34,9 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const checkButtonStyle = STYLES.includes(style) ? style : STYLES[0];
 
-  if (icon) {
-    return (
-      <button onClick={onClick} className={checkButtonStyle} type={type}>
-        <FontAwesomeIcon icon={icon} />
-        {text}
-      </button>
-    );
-  }
-
   return (
     <button onClick={onClick} className={checkButtonStyle} type={type}>
+      {icon && <FontAwesomeIcon icon={icon} />}
       {text}
     </button>
   );
