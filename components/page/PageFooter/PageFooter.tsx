@@ -12,12 +12,7 @@ const PageFooter: React.FC = () => {
     <footer id="page-footer">
       <div className="pageFooter--container">
         <div className="pageFooter--navigation">
-          <p className="pageFooter--navigationTitle">Sitemap</p>
-          <ul>
-            <li className="pageFooter--navigationItem">
-              <PageLink to="login">Login</PageLink>
-            </li>
-          </ul>
+          <h2>FeestBezorgd© all rights reserved</h2>
         </div>
       </div>
     </footer>
