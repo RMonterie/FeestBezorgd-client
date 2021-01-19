@@ -1,0 +1,31 @@
+.order-item-container {
+  list-style: none;
+  padding: 4px 16px;
+  margin: 4px 16px;
+  background: whitesmoke;
+  border-radius: 4px;
+
+  .order-item-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .collapse-toggle {
+      margin-right: 8px;
+    }
+
+    .title-tag {
+      margin-right: 4px;
+    }
+  }
+
+  .order-detail-item {
+    display: flex;
+    align-items: center;
+
+    .order-detail-title {
+      margin-right: 4px;
+      font-weight: bold;
+    }
+  }
+}

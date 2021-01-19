@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Router from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIdeal, faPaypal } from "@fortawesome/free-brands-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../../Button";
+import { createPayment, placeOrder } from "../../../api/user/orderMethods.js";
 
 import "./CheckoutForm.scss";
+import { clearCart } from "../../../redux/actions/cartActions";
 import { preFillForm } from "./utils";
 
 /**
@@ -21,6 +23,8 @@ const CheckoutForm: React.FC = () => {
     mode: "onBlur",
   });
   const products = useSelector((state) => state.cart.products);
+  const dispatch = useDispatch();
+  let user;
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -35,10 +39,27 @@ const CheckoutForm: React.FC = () => {
   }, []);
 
   //TODO: Use the placeOrder method on submit.
-  const onSubmitHandler = (data) => {
+  const onSubmitHandler = async (data) => {
     event.preventDefault();
     console.log(data);
     console.log(products);
+    const payment = await createPayment();
+    let href = payment.data._links.checkout.href;
+    let paymentId = payment.data.id;
+    console.log(paymentId);
+    placeOrder(
+      products,
+      products[0].caterer,
+      data.email,
+      data.street,
+      data.zip,
+      data.city,
+      data.phoneNr,
+      paymentId
+    );
+
+    Router.push(href);
+    dispatch(clearCart());
   };
 
   return (
@@ -118,12 +139,7 @@ const CheckoutForm: React.FC = () => {
           )}
         </div>
         <h3>Select your payment method</h3>
-        <Button
-          icon={faIdeal}
-          style="btn--primary--solid"
-          onClick={() => Router.push("/checkoutSuccess")}
-        />
-        <Button icon={faPaypal} style="btn--primary--solid" type="submit" />
+        <Button icon={faIdeal} style="btn--primary--solid" type="submit" />
       </form>
     </div>
   );
