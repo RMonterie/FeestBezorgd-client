@@ -37,7 +37,7 @@ const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
               <h3 className="customer-name">{username}</h3>
             )}
           </div>
-          <p>My orders</p>
+          <p onClick={() => Router.push("/orders")}>My orders</p>
           <p>Edit my details</p>
           <p
             onClick={() => {
