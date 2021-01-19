@@ -2,13 +2,15 @@ import React from "react";
 
 import OrderListItem from "./OrderListItem/OrderListItem";
 
+import "./OrderList.scss";
+
 interface ProductListProps {
   orders: any;
 }
 
 const OrderList: React.FC<ProductListProps> = ({ orders }) => {
   return (
-    <div className="list-container">
+    <ul className="order-list-container">
       {orders.map((order, index) => (
         <OrderListItem
           key={index}
@@ -24,7 +26,7 @@ const OrderList: React.FC<ProductListProps> = ({ orders }) => {
           paymentId={order.paymentId}
         />
       ))}
-    </div>
+    </ul>
   );
 };
 

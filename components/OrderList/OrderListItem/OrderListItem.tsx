@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronDown,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
-import PageLink from "../../page/PageLink";
+import "./OrderListItem.scss";
 
 interface OrderListItemProps {
   productList: any;
@@ -16,8 +21,8 @@ interface OrderListItemProps {
 }
 
 /**
- * Component that displays a card with the name of
- * a given caterer and a link to the caterer's page.
+ * Component that displays a card with an order the
+ * customer has made
  *
  * @returns {JSX.Element}
  */
@@ -33,17 +38,55 @@ const OrderListItem: React.FC<OrderListItemProps> = ({
   phoneNumber,
   paymentId,
 }) => {
+  const [open, setOpen] = useState(false);
   return (
-    <div>
-      <h4>{customerUsername}</h4>
-      <h4>{catererUsername}</h4>
-      <h4>{email}</h4>
-      <h4>{deliveryAddress}</h4>
-      <h4>{deliveryZipCode}</h4>
-      <h4>{deliveryCity}</h4>
-      <h4>{phoneNumber}</h4>
-      <h4>{paymentId}</h4>
-    </div>
+    <li className="order-item-container">
+      <div className="order-item-title" onClick={() => setOpen(!open)}>
+        {open ? (
+          <FontAwesomeIcon icon={faChevronDown} className="collapse-toggle" />
+        ) : (
+          <FontAwesomeIcon icon={faChevronRight} className="collapse-toggle" />
+        )}
+        <h2 className={"title-tag"}>Payment Id: </h2>
+        <h2>{paymentId}</h2>
+      </div>
+      {open && (
+        <div>
+          <div className="order-detail-item">
+            <p className="order-detail-title">Caterer Ordered From:</p>
+            <span>{catererUsername}</span>
+          </div>
+          <h3>Your details</h3>
+          <div className="order-detail-item">
+            <p className="order-detail-title">Name:</p>
+            <span>{customerUsername}</span>
+          </div>
+          <div className="order-detail-item">
+            <p className="order-detail-title">Email:</p>
+            <span>{email}</span>
+          </div>
+          {phoneNumber?.trim() && (
+            <div className="order-detail-item">
+              <p className="order-detail-title">Phone Number:</p>
+              <span>{phoneNumber}</span>
+            </div>
+          )}
+          <h3>Delivery Address</h3>
+          <div className="order-detail-item">
+            <p className="order-detail-title">Street Address:</p>
+            <span>{deliveryAddress}</span>
+          </div>
+          <div className="order-detail-item">
+            <p className="order-detail-title">Zip Code:</p>
+            <span>{deliveryZipCode}</span>
+          </div>
+          <div className="order-detail-item">
+            <p className="order-detail-title">City:</p>
+            <span>{deliveryCity}</span>
+          </div>
+        </div>
+      )}
+    </li>
   );
 };
 

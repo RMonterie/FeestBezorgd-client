@@ -25,11 +25,11 @@ const orderPage = () => {
   return (
     <BaseLayout title="My orders">
       <div>
-        <h2>Orders</h2>
+        <h2>My Orders</h2>
         {orders.length > 0 ? (
           <OrderList orders={orders} />
         ) : (
-          <h2>Something went wrong with fetching the orders</h2>
+          <h2>Something went wrong with fetching your orders</h2>
         )}
       </div>
     </BaseLayout>
