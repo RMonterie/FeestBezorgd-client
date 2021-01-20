@@ -23,12 +23,14 @@ const CatererProductList: React.FC<CatererProductListProps> = ({
 }) => {
   const [productName, setProductName] = useState();
   const [productPrice, setProductPrice] = useState();
+  const [productImageUrl, setProductImageUrl] = useState();
+
   const isModalOpen = useSelector((state) => state.modal.isOpen);
   const modalType = useSelector((state) => state.modal.type);
   const dispatch = useDispatch();
 
-  const onClickDeleteHandler = async (name, price) => {
-    removeProductFromCatalogue(name, price);
+  const onClickDeleteHandler = async (name) => {
+    removeProductFromCatalogue(name);
   };
 
   return (
@@ -46,6 +48,7 @@ const CatererProductList: React.FC<CatererProductListProps> = ({
                   dispatch(openModal("editProduct"));
                   setProductName(product.name);
                   setProductPrice(product.price);
+                  setProductImageUrl(product.ImageUrl);
                 }}
                 style="btn--secondary--solid"
                 text="Edit"
@@ -88,7 +91,7 @@ const CatererProductList: React.FC<CatererProductListProps> = ({
                 style="btn--success--solid"
                 text="Yes"
                 onClick={() => {
-                  onClickDeleteHandler(productName, productPrice);
+                  onClickDeleteHandler(productName);
                   dispatch(closeModal());
                 }}
               />
@@ -129,6 +132,7 @@ const CatererProductList: React.FC<CatererProductListProps> = ({
               productId={productName}
               productName={productName}
               productPrice={productPrice}
+              productImageUrl={productImageUrl}
               edit={true}
               className="product-form"
             />

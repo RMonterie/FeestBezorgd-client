@@ -16,6 +16,7 @@ interface ProductFormProps {
   productId?: number;
   productName?: string;
   productPrice?: number;
+  productImageUrl?: string;
   edit?: boolean;
   className?: string;
 }
@@ -28,6 +29,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   productId,
   productName,
   productPrice,
+  productImageUrl,
   edit,
   className,
 }) => {
@@ -39,6 +41,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const preFillForm = () => {
     setValue("productName", productName);
     setValue("productPrice", productPrice);
+    setValue("productImageUrl", productImageUrl);
   };
 
   useEffect(() => {
@@ -48,10 +51,19 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const onSubmitHandler = async (data) => {
     event.preventDefault();
     if (edit) {
-      editProductFromCatalogue(productId, data.productName, data.productPrice);
+      editProductFromCatalogue(
+        productId,
+        data.productName,
+        data.productPrice,
+        data.productImageUrl
+      );
       dispatch(closeModal());
     } else {
-      addProductToCatalogue(data.productName, data.productPrice);
+      addProductToCatalogue(
+        data.productName,
+        data.productPrice,
+        data.productImageUrl
+      );
       dispatch(closeModal());
     }
     dispatch(closeModal());
@@ -78,6 +90,17 @@ const ProductForm: React.FC<ProductFormProps> = ({
           ref={register({ required: true })}
         />
         {errors.productPrice && (
+          <p className="product-form-warning">This field is required!</p>
+        )}
+      </div>
+      <div>
+        <label htmlFor="productImageUrl">Product ImageUrl</label>
+        <input
+          type="text"
+          name="productImageUrl"
+          ref={register({ required: true })}
+        />
+        {errors.productName && (
           <p className="product-form-warning">This field is required!</p>
         )}
       </div>
