@@ -105,13 +105,21 @@ export const editProductFromCatalogue = async (productId, name, price) => {
   return;
 };
 
-export const editCatererDetails = async (name, email, address, phoneNumber) => {
+export const editCatererDetails = async (
+  name,
+  email,
+  address,
+  phoneNumber,
+  workingDays,
+  openingTime,
+  closingTime
+) => {
   const token = localStorage.getItem("jwt");
-  let caterer = JSON.parse(localStorage.getItem("user"));
-  let username = caterer.username;
+  const caterer = JSON.parse(localStorage.getItem("user"));
+  const username = caterer.username;
 
   if (token !== null) {
-    const response = await axios.post(`${baseUrl}/caterers/details`, {
+    const response = await axios.put(`${baseUrl}/caterers/details`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -120,6 +128,9 @@ export const editCatererDetails = async (name, email, address, phoneNumber) => {
       email,
       address,
       phoneNumber,
+      workingDays,
+      openingTime,
+      closingTime,
     });
 
     if (response !== null) {
