@@ -11,6 +11,9 @@ interface ProductListItemProps {
   catererName: string;
 }
 
+/**
+ * Component that displays given product details in a card.
+ */
 const ProductListItem: React.FC<ProductListItemProps> = ({
   name,
   price,

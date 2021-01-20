@@ -18,7 +18,6 @@ interface UserDropdownMenuProps {
  * the details of a logged in user depending on if the
  * user is authenticated or not.
  *
- * @returns {JSX.Element}
  */
 const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
   authenticated,

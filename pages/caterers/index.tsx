@@ -10,9 +10,8 @@ import "./CaterersPage.scss";
 /**
  * Page that displays all the caterers.
  *
- * @returns {JSX.Element}
  */
-const CaterersPage = () => {
+const CaterersPage: React.FC = () => {
   const [caterers, setCaterers] = useState([]);
 
   useEffect(() => {

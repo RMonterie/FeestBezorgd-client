@@ -17,7 +17,6 @@ interface ShoppingCartItemProps {
 /**
  * List item that gets displayed in the shopping cart
  *
- * @returns {JSX.Element}
  */
 const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
   name,

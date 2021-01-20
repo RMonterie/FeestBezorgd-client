@@ -17,7 +17,6 @@ import "./ProductsPage.scss";
  * Page for caterer that displays their products and allows CRUD operations
  * on these products.
  *
- * @returns {JSX.Element}
  */
 const ProductsPage: React.FC = () => {
   const [catererProducts, setCatererProducts] = useState([]);

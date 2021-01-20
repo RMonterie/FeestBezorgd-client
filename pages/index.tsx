@@ -14,7 +14,7 @@ import Button from "../components/Button";
 import "./LandingPage.scss";
 
 /**
- * Home page.
+ * Landing page.
  *
  * @returns {JSX.Element}
  */

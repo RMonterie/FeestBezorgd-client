@@ -4,7 +4,6 @@ import MiniShoppingCartItem from "./MiniShoppingCartItem/MiniShoppingCartItem";
 /**
  * Component that displays items in the shopping cart from the redux store.
  *
- * @returns {JSX.Element}
  */
 const MiniShoppingCart: React.FC = () => {
   const cartItems = useSelector((state) => state.cart.products);

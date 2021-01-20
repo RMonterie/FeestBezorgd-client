@@ -8,9 +8,8 @@ import "./ShoppingCartPage.scss";
  * Page that displays the shopping cart and acts as gateway to
  * the checkout.
  *
- * @returns {JSX.Element}
  */
-const ShoppingCartPage = () => {
+const ShoppingCartPage: React.FC = () => {
   return (
     <BaseLayout title="Your order">
       <div className="shoppingcart-page-content">

@@ -17,9 +17,7 @@ import "./PageHeader.scss";
 /**
  * Page header containing navigation.
  *
- * @returns {JSX.Element}
  */
-//TODO Implement the login/register modal to here
 const PageHeader: React.FC = () => {
   const [user, setUser] = useState({
     name: "",

@@ -9,7 +9,6 @@ import "./MiniShoppingCartDropdownMenu.scss";
 /**
  * Dropdown menu that displays the shopping cart.
  *
- * @returns {JSX.Element}
  */
 const MiniShoppingCartDropdownMenu: React.FC = () => {
   const totalPrice = useSelector((state) => state.cart.total);
@@ -26,7 +25,11 @@ const MiniShoppingCartDropdownMenu: React.FC = () => {
           <p>{`€${totalPrice},-`}</p>
         </div>
         <div className="order-button">
-          <Button onClick={onClickHandler} text="Order" />
+          <Button
+            onClick={onClickHandler}
+            text="Order"
+            style="btn--primary--solid"
+          />
         </div>
       </div>
       <MiniShoppingCart />

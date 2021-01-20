@@ -5,7 +5,10 @@ import LoginForm from "../../components/Forms/LoginForm";
 
 import "./CatererLoginPage.scss";
 
-const CatererLoginPage = () => {
+/**
+ * Page that renders a loginform. For caterer use.
+ */
+const CatererLoginPage: React.FC = () => {
   return (
     <div className="login-page-container">
       <div className="caterer-login-container">

@@ -6,7 +6,6 @@ import "./ShoppingCart.scss";
 /**
  * Shopping cart for the shopping cart page.
  *
- * @returns {JSX.Element}
  */
 const ShoppingCart: React.FC = () => {
   const cartItems = useSelector((state) => state.cart.products);

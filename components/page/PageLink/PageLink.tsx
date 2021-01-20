@@ -10,7 +10,6 @@ interface PageLinkProps {
  * to make creating Next links between pages easier because
  * those are written in a very specific way.
  *
- * @returns {JSX.Element}
  */
 const PageLink: React.FC<PageLinkProps> = ({ to, children, className }) => {
   return (

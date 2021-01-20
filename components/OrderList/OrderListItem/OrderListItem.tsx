@@ -24,7 +24,6 @@ interface OrderListItemProps {
  * Component that displays a card with an order the
  * customer has made
  *
- * @returns {JSX.Element}
  */
 const OrderListItem: React.FC<OrderListItemProps> = ({
   productList,

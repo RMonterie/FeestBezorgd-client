@@ -10,7 +10,6 @@ interface NavDropdownItemProps {
 /**
  * Component that opens and closes MiniShoppingCartDropdown.
  *
- * @returns {JSX.Element}
  */
 const CartDropdownItem: React.FC<NavDropdownItemProps> = ({
   dropdown,

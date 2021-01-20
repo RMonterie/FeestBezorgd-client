@@ -5,7 +5,6 @@ import BaseLayout from "../../layout/BaseLayout";
  * Page that gets displayed when the checkout
  * was successful
  *
- * @returns {JSX.Element}
  */
 const CheckoutSuccessPage: React.FC = () => {
   return (

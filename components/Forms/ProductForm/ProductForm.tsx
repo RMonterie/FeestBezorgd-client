@@ -19,7 +19,11 @@ interface ProductFormProps {
   edit?: boolean;
   className?: string;
 }
-
+/**
+ * Form that is used on the my products of the caterer.
+ * Used to either add or edit a product in a caterer's
+ * catalogue.
+ */
 const ProductForm: React.FC<ProductFormProps> = ({
   productId,
   productName,

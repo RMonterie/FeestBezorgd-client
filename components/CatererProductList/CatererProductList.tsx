@@ -10,7 +10,17 @@ import Button from "../Button";
 
 import "./CatererProductList.scss";
 
-const CatererProductList = ({ catererProducts }) => {
+interface CatererProductListProps {
+  catererProducts: any;
+}
+
+/**
+ * Component that renders a list of products a caterer has.
+ * This list is specific for caterers.
+ */
+const CatererProductList: React.FC<CatererProductListProps> = ({
+  catererProducts,
+}) => {
   const [productName, setProductName] = useState();
   const [productPrice, setProductPrice] = useState();
   const isModalOpen = useSelector((state) => state.modal.isOpen);

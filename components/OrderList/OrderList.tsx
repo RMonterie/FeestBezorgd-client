@@ -8,6 +8,10 @@ interface ProductListProps {
   orders: any;
 }
 
+/**
+ * List consisting of orders that a customer has made.
+ * Renders an OrderListItem for each order the customer has made.
+ */
 const OrderList: React.FC<ProductListProps> = ({ orders }) => {
   return (
     <ul className="order-list-container">

@@ -6,7 +6,11 @@ import CheckoutSummary from "../../components/CheckoutSummary";
 
 import "./CheckoutPage.scss";
 
-const CheckoutPage = () => {
+/**
+ * Page for checking out the contents
+ * of the shopping cart.
+ */
+const CheckoutPage: React.FC = () => {
   return (
     <BaseLayout title="checkout">
       <div className="checkout-page">

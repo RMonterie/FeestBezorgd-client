@@ -18,7 +18,9 @@ interface RegisterFormProps {
   role: string;
 }
 
-//TODO Add validation to form
+/**
+ * Form for use on the register page.
+ */
 const RegisterForm: React.FC<RegisterFormProps> = ({ role }) => {
   const [submitError, setSubmitError] = useState(false);
   const dispatch = useDispatch();

@@ -6,7 +6,6 @@ interface IconCardProps {
 /**
  * Component that renders an icon with some text under it.
  *
- * @returns {React.FC}
  */
 const IconCard: React.FC<IconCardProps> = ({ icon, text }) => {
   return (

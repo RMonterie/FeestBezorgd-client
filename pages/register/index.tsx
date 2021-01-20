@@ -6,9 +6,8 @@ import "./RegisterPage.scss";
 /**
  * Page that contains the register form.
  *
- * @returns {JSX.Element}
  */
-const RegisterPage = () => {
+const RegisterPage: React.FC = () => {
   return (
     <BaseLayout title="Register">
       <div className="register-content-container">

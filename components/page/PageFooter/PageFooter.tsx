@@ -4,7 +4,6 @@ import "./PageFooter.scss";
 /**
  * Page footer.
  *
- * @returns {JSX.Element}
  */
 
 const PageFooter: React.FC = () => {

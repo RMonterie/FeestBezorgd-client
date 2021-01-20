@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 
 import "./CheckoutSummary.scss";
 
-const CheckoutSummary = () => {
+/**
+ * Summary of the shopping cart's items and price that is used on the checkout page.
+ */
+const CheckoutSummary: React.FC = () => {
   const cartItems = useSelector((state) => state.cart.products);
   const totalPrice = useSelector((state) => state.cart.total);
 

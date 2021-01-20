@@ -14,7 +14,7 @@ import { preFillForm } from "./utils";
 import "./CheckoutForm.scss";
 
 /**
- * Checkout form for use in the checkout page
+ * Form for use in the checkout page
  */
 const CheckoutForm: React.FC = () => {
   const [userData, setUserData] = React.useState(null);

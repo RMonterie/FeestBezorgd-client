@@ -18,7 +18,6 @@ interface MiniShoppingCartItemProps {
 /**
  * Component that displays a single item in the shopping cart.
  *
- * @returns {JSX.Element}
  */
 const MiniShoppingCartItem: React.FC<MiniShoppingCartItemProps> = ({
   name,

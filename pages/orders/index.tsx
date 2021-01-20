@@ -4,7 +4,10 @@ import BaseLayout from "../../layout/BaseLayout";
 import { getAllOrders } from "../../api/user/orderMethods";
 import OrderList from "../../components/OrderList/OrderList";
 
-const orderPage = () => {
+/**
+ * Page that displays all the orders a customer has made.
+ */
+const orderPage: React.FC = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {

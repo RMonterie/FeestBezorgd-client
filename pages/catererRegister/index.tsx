@@ -1,9 +1,11 @@
 import React from "react";
 
 import RegisterForm from "../../components/Forms/RegisterForm";
-import BaseLayout from "../../layout/BaseLayout";
 
-const CatererRegisterPage = () => {
+/**
+ * Page for registering a caterer.
+ */
+const CatererRegisterPage: React.FC = () => {
   return (
     <div>
       <RegisterForm role="caterer" />

@@ -7,6 +7,10 @@ interface ProductListProps {
   catererName: string;
 }
 
+/**
+ * List that renders the products of a caterer
+ * as ProductListItems. For customer use.
+ */
 const ProductList: React.FC<ProductListProps> = ({ products, catererName }) => {
   return (
     <div className="list-container">
