@@ -43,7 +43,7 @@ const ProductsPage: React.FC = () => {
     <BaseLayout title="My products">
       <div className="page-contents">
         <h2 className="catalogue-title">Manage your products</h2>
-        {catererProducts.length > 0 ? (
+        {catererProducts?.length > 0 ? (
           <CatererProductList catererProducts={catererProducts} />
         ) : (
           <h2>There are no products in your catalogue!</h2>

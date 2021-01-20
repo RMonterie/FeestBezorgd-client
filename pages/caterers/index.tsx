@@ -29,7 +29,7 @@ const CaterersPage: React.FC = () => {
     <BaseLayout title="Find a caterer">
       <div className="caterers-page-container">
         <h2 className="caterers-page-title">Caterers</h2>
-        {caterers.length > 0 ? (
+        {caterers?.length > 0 ? (
           <CatererList caterers={caterers} />
         ) : (
           <h2>Something went wrong with fetching the caterers</h2>
