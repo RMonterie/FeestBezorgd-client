@@ -39,7 +39,12 @@ const UserDropdownMenu: React.FC<UserDropdownMenuProps> = ({
           <p onClick={() => Router.push("/orders")} className="user-menu-item">
             My orders
           </p>
-          <p className="user-menu-item">Edit my details</p>
+          <p
+            className="user-menu-item"
+            onClick={() => Router.push("/editDetails")}
+          >
+            Edit my details
+          </p>
           <p
             onClick={() => {
               dispatch(deAuthenticate());

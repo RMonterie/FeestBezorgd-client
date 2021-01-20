@@ -1,0 +1,22 @@
+.working-day-picker {
+  background: whitesmoke;
+  padding: 16px;
+  margin-top: 16px;
+
+  .opening-closing-time-pickers {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    label {
+      margin-right: 4px;
+    }
+    input {
+      max-width: 80px;
+    }
+  }
+
+  .submit-button-container {
+    margin-top: 4px;
+    text-align: center;
+  }
+}

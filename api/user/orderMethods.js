@@ -26,7 +26,6 @@ export const createPayment = async (products) => {
   }
 };
 
-//TODO make this route work properly.
 export const placeOrder = async (
   productList,
   catererUsername,
