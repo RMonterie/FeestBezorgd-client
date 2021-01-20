@@ -34,7 +34,9 @@ export const placeOrder = async (
   deliveryZipCode,
   deliveryCity,
   phoneNumber,
-  paymentId
+  paymentId,
+  deliveryDate,
+  deliveryTime
 ) => {
   try {
     const token = localStorage.getItem("jwt");
@@ -51,6 +53,8 @@ export const placeOrder = async (
       deliveryCity,
       phoneNumber,
       paymentId,
+      deliveryDate,
+      deliveryTime,
       headers: {
         Authorization: `Bearer ${token}`,
       },

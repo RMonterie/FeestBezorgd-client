@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import Router from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faIdeal, faPaypal } from "@fortawesome/free-brands-svg-icons";
+import { faIdeal } from "@fortawesome/free-brands-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 import Button from "../../Button";
@@ -34,7 +34,7 @@ const CheckoutForm: React.FC = () => {
     if (userData) {
       preFillForm(userData, setValue);
     }
-  }, []);
+  }, [setUserData]);
 
   const onSubmitHandler = async (data) => {
     event.preventDefault();
@@ -49,7 +49,9 @@ const CheckoutForm: React.FC = () => {
       data.zip,
       data.city,
       data.phoneNr,
-      paymentId
+      paymentId,
+      data.date,
+      data.time
     );
 
     Router.push(payment.data._links.checkout.href);

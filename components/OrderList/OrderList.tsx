@@ -27,6 +27,8 @@ const OrderList: React.FC<ProductListProps> = ({ orders }) => {
           deliveryZipCode={order.deliveryZipCode}
           deliveryCity={order.deliveryCity}
           phoneNumber={order.phoneNumber}
+          deliveryDate={order.deliveryDate}
+          deliveryTime={order.deliveryTime}
           paymentId={order.paymentId}
         />
       ))}

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+
+import { baseUrl } from "../../../constants";
 
 import "./OrderListItem.scss";
 
@@ -18,6 +21,8 @@ interface OrderListItemProps {
   deliveryCity: string;
   phoneNumber: string;
   paymentId: string;
+  deliveryDate: string;
+  deliveryTime: string;
 }
 
 /**
@@ -36,8 +41,19 @@ const OrderListItem: React.FC<OrderListItemProps> = ({
   deliveryCity,
   phoneNumber,
   paymentId,
+  deliveryDate,
+  deliveryTime,
 }) => {
   const [open, setOpen] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState("");
+
+  const onClickHandler = async () => {
+    const response = await axios.get(`${baseUrl}/payments/${paymentId}`);
+    if (response) {
+      setPaymentStatus(response.data.status);
+    }
+  };
+
   return (
     <li className="order-item-container">
       <div className="order-item-title" onClick={() => setOpen(!open)}>
@@ -53,8 +69,11 @@ const OrderListItem: React.FC<OrderListItemProps> = ({
         <div>
           <div className="order-detail-item">
             <p className="order-detail-title">Payment Id:</p>
-            <span>{paymentId}</span>
+            <span onClick={onClickHandler} className="payment-id">
+              {paymentId}
+            </span>
           </div>
+          {paymentStatus && <p>{`Payment status: ${paymentStatus}`}</p>}
           <div className="order-detail-item">
             <p className="order-detail-title">Caterer Ordered From:</p>
             <span>{catererUsername}</span>
@@ -70,6 +89,14 @@ const OrderListItem: React.FC<OrderListItemProps> = ({
                 </li>
               ))}
             </ul>
+          </div>
+          <div className="order-detail-item">
+            <p className="order-detail-title">Delivery Date:</p>
+            <span>{deliveryDate}</span>
+          </div>
+          <div className="order-detail-item">
+            <p className="order-detail-title">Delivery Time:</p>
+            <span>{deliveryTime}</span>
           </div>
           <h3>Your details</h3>
           <div className="order-detail-item">
