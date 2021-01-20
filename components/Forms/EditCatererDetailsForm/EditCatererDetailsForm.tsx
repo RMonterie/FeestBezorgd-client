@@ -7,6 +7,9 @@ import Button from "../../Button";
 
 import "./EditCatererDetailsForm.scss";
 
+/**
+ * Form where a caterer can edit their details.
+ */
 const EditCatererDetailsForm: React.FC = () => {
   const { register, handleSubmit, errors, setValue } = useForm({
     mode: "onBlur",

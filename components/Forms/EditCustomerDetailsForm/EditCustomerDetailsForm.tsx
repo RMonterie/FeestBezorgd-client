@@ -7,7 +7,10 @@ import Button from "../../Button";
 
 import "./EditCustomerDetailsForm.scss";
 
-const EditCustomerDetailsForm = () => {
+/**
+ * Form where a user can edit their personal details.
+ */
+const EditCustomerDetailsForm: React.FC = () => {
   const { register, handleSubmit, errors, setValue } = useForm({
     mode: "onBlur",
   });
