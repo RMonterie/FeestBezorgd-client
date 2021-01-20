@@ -46,14 +46,30 @@ const OrderListItem: React.FC<OrderListItemProps> = ({
         ) : (
           <FontAwesomeIcon icon={faChevronRight} className="collapse-toggle" />
         )}
-        <h2 className={"title-tag"}>Payment Id: </h2>
-        <h2>{paymentId}</h2>
+        <h2 className={"title-tag"}>Order Id: </h2>
+        <h2>{id}</h2>
       </div>
       {open && (
         <div>
           <div className="order-detail-item">
+            <p className="order-detail-title">Payment Id:</p>
+            <span>{paymentId}</span>
+          </div>
+          <div className="order-detail-item">
             <p className="order-detail-title">Caterer Ordered From:</p>
             <span>{catererUsername}</span>
+          </div>
+          <div className="products-list-container">
+            <p className="products-list-tag">Products ordered:</p>
+            <ul className="products-list">
+              {productList.map((product, index) => (
+                <li key={index}>
+                  <p className="product-name">{product.name}</p>
+                  <p>{`€${product.price},-`}</p>
+                  <p>{`Quantity: ${product.quantity}`}</p>
+                </li>
+              ))}
+            </ul>
           </div>
           <h3>Your details</h3>
           <div className="order-detail-item">

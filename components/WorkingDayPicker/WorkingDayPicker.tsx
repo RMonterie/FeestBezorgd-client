@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 
-import { editCatererDetails } from "../../api/caterers/catererMethods";
+import { editWorkingTimes } from "../../api/caterers/catererMethods";
 import Button from "../Button";
 
 import "./WorkingDayPicker.scss";
@@ -44,8 +44,7 @@ const WorkingDayPicker: React.FC = () => {
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
-    const response = await editCatererDetails(
-      ...[, , , ,],
+    const response = await editWorkingTimes(
       workingDays,
       openingTime.toString(),
       closingTime.toString()

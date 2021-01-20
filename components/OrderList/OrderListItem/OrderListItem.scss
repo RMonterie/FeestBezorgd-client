@@ -28,4 +28,22 @@
       font-weight: bold;
     }
   }
+
+  .products-list-container {
+    display: flex;
+
+    .products-list-tag {
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    .products-list {
+      padding: 0px;
+      margin: 0px;
+      list-style: none;
+
+      .product-name {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
 }

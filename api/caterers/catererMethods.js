@@ -112,15 +112,7 @@ export const editProductFromCatalogue = async (
   return;
 };
 
-export const editCatererDetails = async (
-  name,
-  email,
-  address,
-  phoneNumber,
-  workingDays,
-  openingTime,
-  closingTime
-) => {
+export const editCatererDetails = async (name, email, address, phoneNumber) => {
   const token = localStorage.getItem("jwt");
   const caterer = JSON.parse(localStorage.getItem("user"));
   const username = caterer.username;
@@ -135,6 +127,31 @@ export const editCatererDetails = async (
       email,
       address,
       phoneNumber,
+    });
+
+    if (response !== null) {
+      return response;
+    }
+  }
+
+  return;
+};
+
+export const editWorkingTimes = async (
+  workingDays,
+  openingTime,
+  closingTime
+) => {
+  const token = localStorage.getItem("jwt");
+  const caterer = JSON.parse(localStorage.getItem("user"));
+  const username = caterer.username;
+
+  if (token !== null) {
+    const response = await axios.put(`${baseUrl}/caterers/working`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      username,
       workingDays,
       openingTime,
       closingTime,
