@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { baseUrl } from "../../constants";
+import { BASE_URL } from "../../constants";
 
 /**
  * Async function for calling the /authenticate api route
@@ -12,7 +12,7 @@ import { baseUrl } from "../../constants";
  */
 export const login = async (username, password) => {
   try {
-    const response = await axios.post(`${baseUrl}/authenticate`, {
+    const response = await axios.post(`${BASE_URL}/authenticate`, {
       username,
       password,
     });
@@ -51,7 +51,7 @@ export const registerCustomer = async ({
   phoneNumber,
 }) => {
   try {
-    const response = await axios.post(`${baseUrl}/customers/signing`, {
+    const response = await axios.post(`${BASE_URL}/customers/signing`, {
       username,
       password,
       email,
@@ -85,7 +85,7 @@ export const registerCaterer = async ({
   phoneNumber,
 }) => {
   try {
-    const response = await axios.post(`${baseUrl}/caterers/signing`, {
+    const response = await axios.post(`${BASE_URL}/caterers/signing`, {
       username,
       password,
       email,

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { baseUrl } from "../../constants";
+import { BASE_URL } from "../../constants";
 
 export const editCustomerDetails = async (
   name,
@@ -13,7 +13,7 @@ export const editCustomerDetails = async (
   const username = customer.username;
 
   if (token !== null) {
-    const response = await axios.put(`${baseUrl}/customers/details`, {
+    const response = await axios.put(`${BASE_URL}/customers/details`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

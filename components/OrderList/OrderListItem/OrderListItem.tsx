@@ -6,7 +6,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { baseUrl } from "../../../constants";
+import { BASE_URL } from "../../../constants";
 
 import "./OrderListItem.scss";
 
@@ -46,11 +46,13 @@ const OrderListItem: React.FC<OrderListItemProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState("");
+  const [paymentAmount, setPaymentAmount] = useState(0);
 
   const onClickHandler = async () => {
-    const response = await axios.get(`${baseUrl}/payments/${paymentId}`);
+    const response = await axios.get(`${BASE_URL}/payments/${paymentId}`);
     if (response) {
       setPaymentStatus(response.data.status);
+      setPaymentAmount(response.data.amount.value);
     }
   };
 
@@ -73,7 +75,13 @@ const OrderListItem: React.FC<OrderListItemProps> = ({
               {paymentId}
             </span>
           </div>
-          {paymentStatus && <p>{`Payment status: ${paymentStatus}`}</p>}
+          {paymentStatus && (
+            <>
+              <p>{`Payment status: ${paymentStatus}`}</p>
+              <p>{`Total amount: €${paymentAmount},-`}</p>
+            </>
+          )}
+
           <div className="order-detail-item">
             <p className="order-detail-title">Caterer Ordered From:</p>
             <span>{catererUsername}</span>

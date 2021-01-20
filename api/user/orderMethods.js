@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { baseUrl } from "../../constants";
+import { BASE_URL } from "../../constants";
 
 export const createPayment = async (products) => {
   try {
@@ -8,7 +8,7 @@ export const createPayment = async (products) => {
     let customer = JSON.parse(localStorage.getItem("user"));
     let customerUsername = customer.username;
 
-    const response = await axios.post(`${baseUrl}/payments`, {
+    const response = await axios.post(`${BASE_URL}/payments`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -43,7 +43,7 @@ export const placeOrder = async (
     let customer = JSON.parse(localStorage.getItem("user"));
     let customerUsername = customer.username;
 
-    const response = await axios.post(`${baseUrl}/orders`, {
+    const response = await axios.post(`${BASE_URL}/orders`, {
       productList,
       customerUsername,
       catererUsername,
@@ -77,7 +77,7 @@ export const getAllOrders = async () => {
     let customerUsername = customer.username;
 
     const response = await axios.get(
-      `${baseUrl}/orders/${customerUsername}/all`,
+      `${BASE_URL}/orders/${customerUsername}/all`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

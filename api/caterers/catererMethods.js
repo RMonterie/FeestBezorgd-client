@@ -1,10 +1,10 @@
 import axios from "axios";
 
-import { baseUrl } from "../../constants";
+import { BASE_URL } from "../../constants";
 
 export const getAllCaterers = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/caterers/list`);
+    const response = await axios.get(`${BASE_URL}/caterers/list`);
     if (response !== null) {
       return response;
     }
@@ -19,11 +19,14 @@ export const getCurrentCaterer = async () => {
   let catererUsername = caterer?.username;
 
   if (token !== null) {
-    const response = await axios.get(`${baseUrl}/caterers/${catererUsername}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await axios.get(
+      `${BASE_URL}/caterers/${catererUsername}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (response !== null) {
       return response;
@@ -39,7 +42,7 @@ export const addProductToCatalogue = async (name, price, imageUrl) => {
   let catererUsername = caterer.username;
 
   if (token !== null) {
-    const response = await axios.post(`${baseUrl}/caterers/products`, {
+    const response = await axios.post(`${BASE_URL}/caterers/products`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -64,7 +67,7 @@ export const removeProductFromCatalogue = async (name) => {
 
   if (token !== null) {
     const response = await axios.delete(
-      `${baseUrl}/caterers/${catererUsername}/products/${name}`,
+      `${BASE_URL}/caterers/${catererUsername}/products/${name}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -92,7 +95,7 @@ export const editProductFromCatalogue = async (
 
   if (token !== null) {
     const response = await axios.put(
-      `${baseUrl}/caterers/products/edit/${productId}`,
+      `${BASE_URL}/caterers/products/edit/${productId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -118,7 +121,7 @@ export const editCatererDetails = async (name, email, address, phoneNumber) => {
   const username = caterer.username;
 
   if (token !== null) {
-    const response = await axios.put(`${baseUrl}/caterers/details`, {
+    const response = await axios.put(`${BASE_URL}/caterers/details`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -147,7 +150,7 @@ export const editWorkingTimes = async (
   const username = caterer.username;
 
   if (token !== null) {
-    const response = await axios.put(`${baseUrl}/caterers/working`, {
+    const response = await axios.put(`${BASE_URL}/caterers/working`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
