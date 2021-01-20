@@ -100,7 +100,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           name="productImageUrl"
           ref={register({ required: true })}
         />
-        {errors.productName && (
+        {errors.productImageUrl && (
           <p className="product-form-warning">This field is required!</p>
         )}
       </div>
