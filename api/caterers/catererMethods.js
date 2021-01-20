@@ -33,7 +33,7 @@ export const getCurrentCaterer = async () => {
   return;
 };
 
-export const addProductToCatalogue = async (name, price) => {
+export const addProductToCatalogue = async (name, price, imageUrl) => {
   const token = localStorage.getItem("jwt");
   let caterer = JSON.parse(localStorage.getItem("user"));
   let catererUsername = caterer.username;
@@ -46,6 +46,7 @@ export const addProductToCatalogue = async (name, price) => {
       catererUsername: catererUsername,
       name,
       price,
+      imageUrl,
     });
 
     if (response !== null) {
@@ -56,20 +57,20 @@ export const addProductToCatalogue = async (name, price) => {
   return;
 };
 
-export const removeProductFromCatalogue = async (name, price) => {
+export const removeProductFromCatalogue = async (name) => {
   const token = localStorage.getItem("jwt");
   let caterer = JSON.parse(localStorage.getItem("user"));
   let catererUsername = caterer.username;
 
   if (token !== null) {
-    const response = await axios.post(`${baseUrl}/caterers/products/delete`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      catererUsername: catererUsername,
-      name,
-      price,
-    });
+    const response = await axios.delete(
+      `${baseUrl}/caterers/${catererUsername}/products/${name}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (response !== null) {
       return response;
@@ -79,21 +80,27 @@ export const removeProductFromCatalogue = async (name, price) => {
   return;
 };
 
-export const editProductFromCatalogue = async (productId, name, price) => {
+export const editProductFromCatalogue = async (
+  productId,
+  name,
+  price,
+  imageUrl
+) => {
   const token = localStorage.getItem("jwt");
   let caterer = JSON.parse(localStorage.getItem("user"));
   let catererUsername = caterer.username;
 
   if (token !== null) {
-    const response = await axios.post(
+    const response = await axios.put(
       `${baseUrl}/caterers/products/edit/${productId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        catererUsername: catererUsername,
+        catererUsername,
         name,
         price,
+        imageUrl,
       }
     );
 
