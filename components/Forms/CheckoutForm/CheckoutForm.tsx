@@ -38,8 +38,8 @@ const CheckoutForm: React.FC = () => {
 
   const onSubmitHandler = async (data) => {
     event.preventDefault();
-    const payment = await createPayment();
-    let href = payment.data._links.checkout.href;
+    console.log(products);
+    const payment = await createPayment(products);
     let paymentId = payment.data.id;
     placeOrder(
       products,
@@ -52,7 +52,7 @@ const CheckoutForm: React.FC = () => {
       paymentId
     );
 
-    Router.push(href);
+    Router.push(payment.data._links.checkout.href);
     dispatch(clearCart());
   };
 
