@@ -95,14 +95,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       </div>
       <div>
         <label htmlFor="productImageUrl">Product ImageUrl</label>
-        <input
-          type="text"
-          name="productImageUrl"
-          ref={register({ required: true })}
-        />
-        {errors.productImageUrl && (
-          <p className="product-form-warning">This field is required!</p>
-        )}
+        <input type="text" name="productImageUrl" ref={register} />
       </div>
       <Button
         type="submit"
